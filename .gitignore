@@ -1,7 +1,11 @@
 __pycache__/
+
 bin/
-lib/
 share/
 pyvenv.cfg
 
 *.DS_Store
+node_modules
+
+lib/
+!src/lib/
