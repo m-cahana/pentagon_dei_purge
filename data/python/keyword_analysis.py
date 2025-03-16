@@ -35,6 +35,13 @@ print(f"Total titles: {df.shape[0]}")
 print(f"Total titles after cleaning: {clean_df.shape[0]}")
 
 # **************
+# top words
+# **************
+
+top_three_words = pd.DataFrame(get_top_three_words(clean_df).head(10))
+
+
+# **************
 # keyword lookups
 # **************
 
@@ -112,7 +119,6 @@ keyword_groups = {
     ],
     'native american': [
         'native',
-        'native',
         'indian',
         'powwow',
         'lumbee',
@@ -133,7 +139,7 @@ keyword_groups = {
         'gender', 
         'rainbow',
     ],
-    'smaller targets': [
+    'other ethnicities & religions': [
         'jewish american heritage',
         'holocaust',
         'irish american heritage',
@@ -180,7 +186,7 @@ keyword_groups = {
         'remembrance',
         'next generation',
     ],
-    'other': [
+    'no clear theme': [
         '', # catch call
         'medical care',
     ],
@@ -190,7 +196,6 @@ keyword_groups = {
 # keyword grouping
 # **************
 
-
 # create a column that lists all present keyword groups
 clean_df['keyword_groups_present'] = clean_df['title'].str.lower().apply(
     lambda x: ', '.join([keyword_group for keyword_group in keyword_groups if any(keyword in x for keyword in keyword_groups[keyword_group])])
@@ -199,16 +204,43 @@ clean_df['keyword_groups_present'] = clean_df['title'].str.lower().apply(
 # create a column that lists top keyword group
 clean_df['top_keyword_group'] = clean_df['keyword_groups_present'].str.split(',').str[0]
 
+# create a column that lists all keywords beloning to to the top keyword group
+clean_df['top_keyword_group_keywords'] = clean_df.apply(
+    lambda x: ', '.join(keyword for keyword in keyword_groups[x['top_keyword_group']] if keyword in x['title'].lower()), 
+    axis = 1
+)
+
 summary = clean_df['top_keyword_group'].value_counts().reset_index()
 summary['share'] = summary['count'] / summary['count'].sum()
 
+# get top keywords by keyword group
+top_keywords_by_group = pd.DataFrame()
+for keyword_group in keyword_groups:
+    for keyword in keyword_groups[keyword_group]:
+        count = clean_df[clean_df.title.str.lower().str.contains(keyword)].shape[0]
+
+        top_keywords_by_group = pd.concat([
+            top_keywords_by_group, 
+            pd.DataFrame({
+                'keyword_group': [keyword_group],
+                'keyword': [keyword],
+                'count': [count]
+            })
+        ])
+# keep only the top 10 keywords by keyword group
+top_keywords_by_group = top_keywords_by_group.sort_values(by=['keyword_group', 'count'], ascending=False).groupby('keyword_group').head(5)
 
 # **************
 # output
 # **************
 
-summary.to_csv('../processed/keyword_summary.csv', index=False)
-clean_df.to_csv('../processed/cleaned_titles_with_keywords.csv', index=False)
+top_three_words.to_csv('../../static/data/top_three_words.csv', index=False)
+
+summary.to_csv('../../static/data/keyword_summary.csv', index=False)
+
+clean_df.to_csv('../../static/data/cleaned_titles_with_keywords.csv', index=False)
+
+top_keywords_by_group.to_csv('../../static/data/top_keywords_by_group.csv', index=False)
 
 # **************
 # explore
