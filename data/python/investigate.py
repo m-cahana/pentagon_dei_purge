@@ -65,6 +65,42 @@ print(three_word_counts.head(50))
 # keyword lookups
 # **************
 
+# it seems like there are a few large clusters that should be split into separate keyword groups
+# 1. black (includes things like MLK, tuskegee, soul food, etc.)
+# 2. women
+# 3. hispanic
+# 4. native american/indian (includes powwow, lumbee, code talker, etc.)
+# 5. asian
+# 6. lgbtq+ / pride (includes gay false pickups)
+# 7. various other diversity keywords
+
+keyword_groups = {
+    'black': [
+        'black history month', 
+        'african american heritage', 
+        'juneteenth',
+        'tuskegee',
+        'martin luther king',
+        'mlk',
+        'aahm',
+        'aahc',
+        'bhm',
+        'gospel'
+        'soul food', 
+        'slave'
+    ],
+    'women': [
+        'women', 
+        'woman',
+        "women's history month",
+        "women's history",
+        'female',
+        'celebrating women',
+        'honor women',
+        'whm'
+    ],
+}
+
 keywords = [
     'black', 
     'women', 
