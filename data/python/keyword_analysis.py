@@ -141,6 +141,7 @@ keyword_groups = {
         'eid',
         'french american heritage',
         'italian american heritage',
+        'observance graphic',
     ],
     'diversity': [
         'heritage',
