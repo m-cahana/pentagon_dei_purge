@@ -19,6 +19,8 @@ df = pd.DataFrame(df['columns'].tolist(), columns=['filename', 'title', 'url'])
 # clean up the URLs by removing the markdown formatting
 df['url'] = df['url'].str.extract(r'\[(.*?)\]')[0]
 
+# clean up titles by standardizing apostrophes
+df['title'] = df['title'].str.replace("’", "'")
 
 # Identify titles that are one word long and contain numbers
 df['one_word_with_numbers'] = df['title'].str.match(r'^\S*\d+\S*$') & ~df['title'].str.contains(r'\s')
@@ -38,7 +40,7 @@ print(f"Total titles after cleaning: {clean_df.shape[0]}")
 # top words
 # **************
 
-top_three_words = pd.DataFrame(get_top_three_words(clean_df).head(10))
+top_three_words = pd.DataFrame(get_top_three_words(clean_df).head(10)).reset_index().rename(columns = {'index':'words'})
 
 
 # **************
