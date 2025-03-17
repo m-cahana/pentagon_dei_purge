@@ -175,22 +175,20 @@
         if (!container || !scrollContainer) return;
         
         const containerRect = container.getBoundingClientRect();
-        const scrollContainerRect = scrollContainer.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         
-        // Check if the intro section is in view
-        const introSection = document.querySelector('.intro-section');
-        const introRect = introSection ? introSection.getBoundingClientRect() : null;
+        // Get the title element and check its position
+        const titleElement = document.querySelector('.circle-pack-scroll h1');
+        const titleRect = titleElement ? titleElement.getBoundingClientRect() : null;
         
         // Check if the end spacer is in view
         const endSpacer = document.querySelector('.end-spacer');
         const endRect = endSpacer ? endSpacer.getBoundingClientRect() : null;
         
         // Calculate when the visualization should become fixed
-        // Only change state when the intro section has scrolled significantly (at least 50% out of view)
-        // to prevent flickering at the transition point
+        // Make it visible when the title is near the top of the screen
         const shouldBeVisible = 
-            (introRect && introRect.bottom < windowHeight * 0.5) && 
+            (titleRect && titleRect.bottom <= 80) && // Title is at or above the top of the screen (with small buffer)
             !(endRect && endRect.top < windowHeight * 0.8);
             
         // Only update if the state is changing to prevent unnecessary re-renders
@@ -253,18 +251,18 @@
         const color = d3.scaleOrdinal()
             .domain(keywordGroups.map(d => d.group))
             .range([
-                "#2D3E40", // Dark military teal
-                "#4A5D23", // Army green
-                "#3F4A3C", // Olive drab
-                "#5D5C61", // Slate gray
-                "#7D2E33", // Military maroon
-                "#2C3539", // Gunmetal
-                "#556B2F", // Dark olive green
-                "#36454F", // Charcoal
-                "#4E5754", // Feldgrau (German field gray)
-                "#1F2937", // Navy blue-gray
-                "#5F4B32", // Military brown
-                "#3D3B30"  // Taupe gray
+                "#3F3B2E", // Jacko Bean
+                "#A4895C", // Café Au Lait
+                "#5B533F", // Olive Drab Camouflage
+                "#736246", // Boy Red
+                "#96794E", // Pale Brown
+                "#252B1F", // Pine Tree
+                "#57453B", // Dark Brown (from French Camouflage)
+                "#8A705D", // Medium Brown (from French Camouflage)
+                "#534E3B", // Olive Gray (from French Camouflage)
+                "#4A5A3F", // Army Green (from Green Camouflage)
+                "#8E965B", // Olive Green (from Green Camouflage)
+                "#46B030"  // Military Green (from Bright Camouflage)
             ]);
             
         // Calculate the base size for circles based on container dimensions and screen size
@@ -421,16 +419,15 @@
         });
         
         // If we're on the overview section, show all circles equally
-        // but don't zoom out if we're on a small screen and already zoomed in
         if (section.id === -1) {
-            // Only reset zoom on larger screens or initial view
+            // Only reset zoom on larger screens to prevent unnecessary zooming out on small screens
             const isSmallScreen = window.innerWidth < 768;
             if (!isSmallScreen) {
-                // Reset zoom on larger screens
+                // Reset zoom
                 d3.select(svg)
                     .transition()
                     .duration(1000)
-                    .attr("transform", `translate(${svg.getBoundingClientRect().width/2},${svg.getBoundingClientRect().height/2}) scale(1)`);
+                    .attr("transform", `translate(${width/2},${height/2}) scale(1)`);
             }
                 
             // Show all circles
@@ -461,23 +458,26 @@
             const cy = parseFloat(circle.getAttribute("cy") || "0");
             const r = parseFloat(circle.getAttribute("r") || "0");
             
-            // Get SVG dimensions
-            const svgRect = svg.getBoundingClientRect();
-            const width = svgRect.width;
-            const height = svgRect.height;
+            // Calculate a much more aggressive zoom that makes the circle take up most of the SVG
+            // Use a fixed multiplier to determine how much of the viewport the circle should fill
+            // Lower values = more zoom (circle takes up more space)
+            const fillFactor = 4; // More aggressive zoom to make the circle larger
             
-            // Calculate zoom scale (make the circle take up about 1/3 of the view)
-            // Use a more moderate scale on small screens
-            const isSmallScreen = window.innerWidth < 768;
-            const scale = isSmallScreen ? 
-                Math.min(width, height) / (r * 8) : // Less zoom on small screens
-                Math.min(width, height) / (r * 6);  // More zoom on large screens
+            // Calculate scale based on the circle's radius and the desired fill factor
+            const scale = Math.min(width, height) / (r * fillFactor);
             
-            // Zoom to the circle - center it in the viewport
+            // Position the circle at the top left, showing only its bottom right quadrant
+            // Instead of centering the circle, we position it so that its top-left corner is at the origin
+            // This means we need to translate by -cx + r and -cy + r (to align the top-left of the circle with the origin)
+            // Then we offset by a small amount to show the bottom-right quadrant
+            const offsetX = r * 0.75; // Show more of the right side
+            const offsetY = r * 0.75; // Show more of the bottom side
+            
+            // Apply the transform to position the circle at the top left
             d3.select(svg)
                 .transition()
                 .duration(1000)
-                .attr("transform", `translate(${width/2 - cx * scale},${height/2 - cy * scale}) scale(${scale})`);
+                .attr("transform", `translate(${-cx * scale + offsetX}, ${-cy * scale + offsetY}) scale(${scale})`);
                 
             // Highlight the current circle
             d3.select(circle)
@@ -531,14 +531,6 @@
 <div class="circle-pack-scroll">
    <h1>{title}</h1>
    
-   <!-- Introduction section that scrolls out of view -->
-   <div class="intro-section">
-       <p class="intro-text">
-           Scroll down to explore the main themes of purged websites through an interactive visualization.
-           Each circle represents a theme, with size indicating the number of websites in that category.
-       </p>
-   </div>
-   
    <div class="visualization-container">
        <!-- Circle packing container that becomes fixed during scrolling -->
        <div class="circle-packing__container" 
@@ -577,14 +569,6 @@
            {/if}
        </div>
    </div>
-   
-   <!-- Conclusion section that appears after scrolling through all sections -->
-   <div class="conclusion-section">
-       <h2>Explore More</h2>
-       <p>
-           You've explored the main themes of purged websites. Continue scrolling to see more detailed analyses and findings.
-       </p>
-   </div>
 </div>
 
 <style>
@@ -596,23 +580,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-    
-    .intro-section {
-        width: 100%;
-        min-height: 50vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 40px 20px;
-    }
-    
-    .intro-text {
-        font-size: 18px;
-        line-height: 1.6;
-        max-width: 600px;
     }
     
     .visualization-container {
@@ -637,7 +604,11 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
+        right: 0;
+        margin: 0 auto;
+        max-width: 1000px; /* Match the max-width of the parent container */
+        padding: 0 20px; /* Match the padding of the parent container */
+        width: calc(100% - 40px); /* Account for padding */
         height: 100vh;
         z-index: 1;
         /* Ensure the fixed container has the same dimensions and appearance */
@@ -687,13 +658,6 @@
         height: 50vh;
     }
     
-    .conclusion-section {
-        width: 100%;
-        min-height: 50vh;
-        padding: 60px 20px;
-        text-align: center;
-    }
-    
     .stats {
         display: flex;
         justify-content: space-between;
@@ -732,6 +696,14 @@
         font-size: 20px;
     }
     
+    /* Custom styling for circle labels */
+    :global(.circle-packing__container text) {
+        font-size: 14px !important;
+        font-weight: 300 !important;
+        font-family: Arial !important;
+        fill: black !important;
+    }
+    
     /* Media query for small screens */
     @media (max-width: 768px) {
         .circle-pack-scroll {
@@ -756,8 +728,9 @@
             font-size: 20px;
         }
         
-        .intro-text {
-            font-size: 16px;
+        /* Adjust circle label size for small screens */
+        :global(.circle-packing__container text) {
+            font-size: 12px !important;
         }
     }
 </style> 

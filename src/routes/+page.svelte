@@ -3,6 +3,17 @@
     import Footer from "$lib/components/footer.svelte";
     import TopWordList from "$lib/components/top_word_list.svelte";
     import CirclePackScroll from "$lib/components/circle_pack_scroll.svelte";
+    import { onMount } from 'svelte';
+    
+    onMount(() => {
+        // Ensure page starts at the top when refreshed
+        window.onbeforeunload = function() {
+            window.scrollTo(0, 0);
+        };
+        
+        // Also scroll to top immediately when component mounts
+        window.scrollTo(0, 0);
+    });
 </script>
 
 <main>

@@ -42,6 +42,8 @@ print(f"Total titles after cleaning: {clean_df.shape[0]}")
 
 top_three_words = pd.DataFrame(get_top_three_words(clean_df).head(10)).reset_index().rename(columns = {'index':'words'})
 
+top_words = pd.DataFrame(get_top_words(clean_df).head(50)).reset_index().rename(columns = {'index':'words'})
+
 
 # **************
 # keyword lookups
