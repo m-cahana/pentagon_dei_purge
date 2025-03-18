@@ -1,8 +1,10 @@
 <script>
-	import Scrolly from "$lib/components/scrolly.svelte";
+	import TitleScrolly from "$lib/components/title_scrolly.svelte";
     import Footer from "$lib/components/footer.svelte";
     import TopWordList from "$lib/components/top_word_list.svelte";
+
     import CirclePackScroll from "$lib/components/circle_pack_scroll.svelte";
+    import CirclePack from "$lib/components/circle_packing.svelte";
     import { onMount } from 'svelte';
     
     onMount(() => {
@@ -35,15 +37,58 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     </p>
 
-    <CirclePackScroll />
 
-	<Scrolly />
+    <CirclePack />
 
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     </p>
 
-    <Scrolly />
+    <TitleScrolly 
+      titlesList={
+        ["Women's History Month",
+        "A story to tell: MCSC celebrates Women's History Month",
+        "WASPs receiving Congressional Gold Medal", 
+        "Marines Honor Women's History Month",
+        "First female shuttle commander",
+        "We can do it! - Female Marines gather to show support for each other", 
+        "Discussing Women's History Month",
+        "Kurze's rise to DLA Executive Director: A testament to women",
+        "WASP recalls her World War II experiences",
+        "Staff Sgt. Betty Blake: First female in AF",
+        "Honoring SixTripleEight",
+        "The First Female Marine - Opha May Johnson",
+        "571 MSAS launches inaugural WPS seminar in El Salvador"]}
+      highlightMap={{
+        0: [
+            "Women's History Month",
+            "Kurze's rise to DLA Executive Director: A testament to women","Discussing Women's History Month",
+            "A story to tell: MCSC celebrates Women's History Month", 
+            "We can do it! - Female Marines gather to show support for each other", 
+        ],
+        1: [ "Honoring SixTripleEight"],
+        2: [
+            "First female shuttle commander", 
+            "Staff Sgt. Betty Blake: First female in AF",
+             "The First Female Marine - Opha May Johnson",
+        ],
+        3: [
+            "WASP recalls her World War II experiences",
+            "WASPs receiving Congressional Gold Medal",
+            "571 MSAS launches inaugural WPS seminar in El Salvador",
+        ]
+      }}
+      highlightText={{
+        0: "Any mention of women's history month has been purged, along with celebration of women in the military.",
+        1: "Cultural media that celebrates women - like the movie Six Triple Eight, which highlights the contributions an all-black women's battalion during WWII - has been removed too.",
+        2: "Female figures from history have been erased.",
+        3: "So too have female-oriented military organizations, like the Women Air Force Service Pilots (WASPS), and the Women's Peace Service (WPS)."
+      }}
+    />
+    
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
 </main>
 
 <Footer />
