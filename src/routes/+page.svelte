@@ -64,7 +64,7 @@
     <ThemeCirclePack />
 
     <p>
-        It's instructive to dig into a sample of websites that all fall under the same theme. What you find is that there are a few different types of content within a thematic category that are subject to purge. Consider this sample of websites about women, for example:
+        It's instructive to dig into a sample of websites that all fall under the same theme. What you find is that there are a few different types of content within a thematic category. Consider this sample of websites about women, for example:
       </p>
 
     <TitleScrolly 

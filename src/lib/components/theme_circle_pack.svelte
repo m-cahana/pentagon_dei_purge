@@ -14,8 +14,8 @@
             0: "The largest groups targeted by the Pentagon's DEI purge are women and Black people.",
             1: "Asian Americans, Pacific Islanders, and Hispanic people trail not too far behind.",
             2: "Native Americans and LGBTQ+ people are also significant targets.",
-            3: ' There are a fair amount of websites that relate to generic DEI content, like websites that discuss "inclusion" without mentioning any specific groups to be included ',
-            4: "And there's a large segment of websites that don't belong to any defined theme. These websites' titles alone aren't very informative. If the their full content wasn't already purged, I suspect we'd find the website was targeted because it fit into a specific theme."
+            3: 'There are a fair amount of websites that relate to generic DEI content, like websites that discuss "diversity" or "inclusion" without mentioning any specific groups.',
+            4: "And there's a large segment of websites that don't belong to any defined theme. These websites' titles alone aren't very informative. If their full content wasn't already purged, I suspect we'd find these websites were targeted because they fit into a specific theme."
         },
         // Add highlightMap prop to specify which themes to highlight at each step
         highlightMap = {
