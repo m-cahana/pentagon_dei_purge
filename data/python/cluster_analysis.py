@@ -36,12 +36,13 @@ summary.sort_values(by='count', ascending=False)
 
 all_titles = pd.read_csv('../../static/data/cleaned_titles.csv')
 
+all_titles = all_titles[all_titles.title.notna()]
+
 all_titles = all_titles.merge(
     df[['title', 'theme']],
     on='title',
     how='left'
 )
-
 
 summary = all_titles.groupby('theme').agg(
     count = ('title', 'count')

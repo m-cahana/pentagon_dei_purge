@@ -29,7 +29,9 @@ one_word_examples = df[df['one_word_with_numbers']]['title'].head(10).tolist()
 print(f"\nExamples of one-word titles with numbers: {one_word_examples}")
 print(f"Total one-word titles with numbers: {df['one_word_with_numbers'].sum()}")
 
-clean_df = df[~(df['one_word_with_numbers'])]   
+clean_df = df[~(df['one_word_with_numbers'])]
+
+clean_df = clean_df[clean_df.title.notna()]
 
 
 print(f"Total titles: {df.shape[0]}")

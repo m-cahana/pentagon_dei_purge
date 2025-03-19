@@ -2,9 +2,9 @@
 	import TitleScrolly from "$lib/components/title_scrolly.svelte";
     import Footer from "$lib/components/footer.svelte";
     import TopWordList from "$lib/components/top_word_list.svelte";
-
-    import CirclePackScroll from "$lib/components/circle_pack_scroll.svelte";
+    
     import CirclePack from "$lib/components/circle_packing.svelte";
+    import ThemeCirclePack from "$lib/components/theme_circle_pack.svelte";
     import { onMount } from 'svelte';
     
     onMount(() => {
@@ -38,7 +38,7 @@
     </p>
 
 
-    <CirclePack />
+    <ThemeCirclePack />
 
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
