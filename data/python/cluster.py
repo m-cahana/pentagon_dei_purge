@@ -91,7 +91,7 @@ def categorize_text_by_type(text):
     prompt = f"""
     You are a text categorization assistant. Your task is to categorize website titles from the military. The titles have recently been erased, and I want to group them into categories. You need to group each title into one of the following groups based on its content:
 
-    1. Explicit heritage events: Titles that celebrate a specific heritage month or event. For example, titles related to Black History Month, Hispanic Heritage Month, Native American Heritage Month, Asian Heritage Month, etc.
+    1. Explicit heritage and DEI events: Titles that celebrate a specific heritage month or event, or an explicit Diversity, Equity, and Inclusion (DEI) program. For example, titles related to Black History Month, Hispanic Heritage Month, Native American Heritage Month, Asian Heritage Month, Inclusivity workshops, etc.
     2. Everyday celebrations of heritage or ethnicity: Titles that mention activities or celebrations related to a specific heritage group without explicitly mentioning a heritage month or event. For example, titles related to Asian food, gospel music, female-led movies, fiestas, powwows, etc.
     3. Mentions of personnel that highlight their ethnicity: any mentions of military personnel that call out the fact that these personnel are black, hispanic, native american, asian, etc.
     4. Military personnel that belong to a specific ethnic group, even if that isn't explicitly mentioned: Titles that mention military personnel who happen to a specific heritage group, even if that isn't in the title. For example, titles like Vance Marchbanks (who is black), the code talkers (who are native American), Nishimoto (who is asian), Eric Fanning (who is gay), etc.

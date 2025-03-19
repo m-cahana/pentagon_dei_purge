@@ -7,7 +7,7 @@
     let {
         dataPath = '/data/cleaned_titles_with_themes.csv', // Path to the data file
         colorScheme = [
-            "#4d784e" // military color scheme
+            "var(--color-military-green)" // military color scheme
         ],
         // New props for scrolly content
         scrollContent = {

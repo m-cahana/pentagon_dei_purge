@@ -22,7 +22,7 @@
     <div class="subtitle">March 2025</div>
 
     <p>
-        On the first day of his second term in office, President Trump signed an <a href = 'https://www.whitehouse.gov/presidential-actions/2025/01/ending-radical-and-wasteful-government-dei-programs-and-preferencing/'>executive order</a> calling for an end to government DEI programs, which he claimed were "radical", "wasteful", and lead to "shameful discrimination". In turn, the Pentagon released a <a href = 'https://www.defense.gov/News/News-Releases/News-Release-View/Article/260000/pentagon-to-end-radical-and-wasteful-dei-programs-and-preferencing-in-the-defense-department/'>memorandum</a> calling for a "digital content refresh" across all Department of Defense public platforms. Any articles, photos, and videos promoting DEI were ordered to be removed by March 5th.
+        On the first day of his second term in office, President Trump signed an <a href = 'https://www.whitehouse.gov/presidential-actions/2025/01/ending-radical-and-wasteful-government-dei-programs-and-preferencing/'>executive order</a> calling for an end to government DEI programs, which he categorized as "radical", "wasteful", and the cause of "shameful discrimination". In turn, the Pentagon released a <a href = 'https://www.defense.gov/News/News-Releases/News-Release-View/Article/260000/pentagon-to-end-radical-and-wasteful-dei-programs-and-preferencing-in-the-defense-department/'>memorandum</a> calling for a "digital content refresh" across all Department of Defense public platforms. Any articles, photos, and videos promoting DEI were ordered to be removed by March 5th.
     </p>
 
     <p>
@@ -30,7 +30,7 @@
     </p>
 
     <p>
-        I thought I'd take a closer look into all the websites that were purged to systematically identify the themes that the Pentagon is targeting for removal. Most website urls are now defunct, so I  investigated website titles, which were preserved in an <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1'>AP database</a>. I started by checking the most common phrases in titles:
+        I thought I'd take a closer look into all the websites that were purged, to systematically identify the types of content the Pentagon is targeting for removal. Most website urls are now defunct, so I investigated website titles, which were preserved in an <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1'>AP database</a>. I started by checking the most common phrases in titles:
     </p>
 
     <br>
@@ -38,7 +38,7 @@
     <TopWordList />
 
     <p>
-        Looking through these top phrases and some additional, less common ones, I figured websites could be grouped into a few different themes: 
+        Looking through these top phrases and some additional, less common ones, I determined that websites could be grouped into a few different themes: 
     </p>
 
     <ol>
@@ -56,7 +56,7 @@
 
     <p>
 
-    To classify each website into one of these themes, I used OpenAI's large language model, GPT-4o-mini. This LLM has enough contextual knowledge to recognize that titles like "Jackie Robinson" or "Tuskegee Airmen" are related to Black people, even though they don't explicitly have "black" in their text. Manually reveiwing a sample of 100 classifications, I found that the LLM was consistently choosing themes that I would have chosen myself. Here are all websites, classified by theme according to their title: 
+    To classify each website into one of these themes, I used OpenAI's large language model, GPT-4o-mini. This LLM has enough contextual knowledge to recognize that titles like "Jackie Robinson" or "Tuskegee Airmen" are related to Black people, even though they don't explicitly have "black" in their text. After manually reviewing a sample of 100 classifications, I found that the LLM was consistently choosing the themes that I would have chosen myself. Here are all websites, classified by theme according to their title: 
 
     </p>    
 
@@ -64,7 +64,7 @@
     <ThemeCirclePack />
 
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        It's instructive to dig into a sample of websites that all fall under the same theme. What you find is that there are a few different types of content within a thematic category that are subject to purge. Consider this sample of websites about women, for example:
       </p>
 
     <TitleScrolly 
@@ -110,7 +110,7 @@
     />
     
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     </p>
 
     <TitleScrolly 
@@ -173,9 +173,18 @@
   />
 
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    This consistent pattern led me to classify websites into a few different types as well:
   </p>
   
+  <ol>
+    <li><span class = 'highlight'>Explicit heritage or DEI events</span>: websites that mention a specific heritage month or event, like Black History Month or Women's History Month.</li>
+    <li><span class = 'highlight'>Everyday celebrations of heritage, ethnicity, or religion</span>: websites that mention activities or celebrations related to a specific heritage group, like gospel music, fiestas, or powwows.</li>
+    <li><span class = 'highlight'>Mentions of military personnel that explicitly highlight their ethnicity</span>: websites that mention military personnel and call out the fact that these personnel are Black, Hispanic, Native American, etc.</li>
+    <li><span class = 'highlight'>Military personnel that just happen to belong to a minority group, even though that isn't explicitly mentioned</span>: websites that mention military personnel, without mentioning their ethnicity or relation to a specific DEI program.</li>
+    <li><span class = 'highlight'>Facts of history that relate to a specific ethnic group</span>: websites that mention facts of history that relate to a specific ethnic group, like slavery, the civil rights movement, or the Holocaust.</li>
+    <li>Websites belonging to some <span class = 'highlight'>other</span> category</li>
+    
+</ol>
 
 </main>
 
@@ -220,6 +229,13 @@
 
     .highlight {
         font-weight: 600;
+    }
+
+    /* Link styling */
+    a, a:visited, a:hover, a:active {
+        color: var(--color-military-green);
+        text-decoration: underline;
+        text-underline-offset: 2px;
     }
 
 </style>
