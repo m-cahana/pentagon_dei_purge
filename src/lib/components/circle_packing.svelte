@@ -174,9 +174,12 @@
             .style("font-family", "Arial, sans-serif")
             .style("font-weight", "300") 
             .style("pointer-events", "none")
-            .style("fill", "white");
+            .style("fill", "white")
+            // Important: Set initial x,y position to match the circle
+            .attr("x", d => d.x)
+            .attr("y", d => d.y);
             
-        // Apply text wrapping to labels with a simpler, more reliable approach
+        // Apply text wrapping to labels with a more accurate centering approach
         labels.each(function(d) {
             const text = d3.select(this);
             const radius = size(d.count);
@@ -193,19 +196,23 @@
             const lines = [];
             let currentLine = [];
             
+            // Create a temporary text element with proper SVG namespace for more accurate measurements
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            document.body.appendChild(svg);
+            const testText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            testText.style.fontSize = `${fontSize}px`;
+            testText.style.fontFamily = "Arial, sans-serif";
+            testText.style.fontWeight = "300";
+            svg.appendChild(testText);
+            
             // Group words into lines that fit within maxWidth
             for (let i = 0; i < words.length; i++) {
                 const word = words[i];
                 currentLine.push(word);
                 
-                // Create a temporary text element to measure width
-                const testText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                // Use the temporary text element to measure width
                 testText.textContent = currentLine.join(" ");
-                testText.style.fontSize = `${fontSize}px`;
-                testText.style.fontFamily = "Arial, sans-serif";
-                document.body.appendChild(testText);
                 const width = testText.getBBox().width;
-                document.body.removeChild(testText);
                 
                 if (width > maxWidth && currentLine.length > 1) {
                     currentLine.pop(); // Remove last word
@@ -219,14 +226,20 @@
                 lines.push(currentLine.join(" "));
             }
             
-            // Add each line as a tspan
-            const lineHeight = fontSize * 1.2;
+            // Clean up temporary elements
+            document.body.removeChild(svg);
+            
+            // Add each line as a tspan with precise positioning
+            const lineHeight = fontSize * 1.2; // Slightly increase line height for better readability
             const totalHeight = lines.length * lineHeight;
-            const yOffset = -(totalHeight / 2) + (lineHeight / 2); // Center vertically
+            
+            // Calculate starting y position to center text vertically within the circle
+            // Use relative positioning for tspans to maintain proper positioning during simulation
+            const yOffset = -(totalHeight / 2) + (lineHeight / 2);
             
             lines.forEach((line, i) => {
                 text.append("tspan")
-                    .attr("x", 0) // Will be positioned relative to the text element
+                    .attr("x", 0) // Center horizontally (text element already has text-anchor: middle)
                     .attr("dy", i === 0 ? yOffset : lineHeight) // First line has offset, others have lineHeight
                     .text(line);
             });
@@ -244,6 +257,7 @@
             const boundWidth = width / 2 - margin;
             const boundHeight = height / 2 - margin;
             
+            // First, update circle positions
             circles
                 .attr("cx", d => {
                     return d.x = Math.max(-boundWidth + radius(d), Math.min(boundWidth - radius(d), d.x));
@@ -252,10 +266,10 @@
                     return d.y = Math.max(-boundHeight + radius(d), Math.min(boundHeight - radius(d), d.y));
                 });
                 
-            // Position each text element at the center of its circle
-            labels
-                .attr("x", d => d.x)
-                .attr("y", d => d.y);
+            // Then, update text positions to match their circles
+            // This ensures the text always follows its circle
+            labels.attr("x", d => d.x)
+                  .attr("y", d => d.y);
         }
     }
 

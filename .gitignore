@@ -9,3 +9,5 @@ pyvenv.cfg
 
 lib/
 !src/lib/
+
+**/api.py

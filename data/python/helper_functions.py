@@ -7,6 +7,8 @@ from nltk.tag import pos_tag
 def get_top_words(df):
     # concatenate all titles without keywords and split into words
     all_words = (df['title']
+                 # remove special characters
+                 .str.replace(':', '')
                  # convert to lowercase 
                 .str.lower()                    
                 # concatenate all titles with space separator

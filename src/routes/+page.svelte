@@ -19,7 +19,7 @@
 </script>
 
 <main>
-	<h1>What gets erased in a Pentagon DEI purge?</h1>
+	<h1>What is the Trump Administration trying to erase through its DEI purge?</h1>
     <div class="subtitle">March 2025</div>
 
     <p>

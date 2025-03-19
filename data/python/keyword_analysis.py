@@ -240,6 +240,8 @@ top_keywords_by_group = top_keywords_by_group.sort_values(by=['keyword_group', '
 
 top_three_words.to_csv('../../static/data/top_three_words.csv', index=False)
 
+top_words.to_csv('../../static/data/top_words.csv', index=False)
+
 summary.to_csv('../../static/data/keyword_summary.csv', index=False)
 
 clean_df.to_csv('../../static/data/cleaned_titles_with_keywords.csv', index=False)
