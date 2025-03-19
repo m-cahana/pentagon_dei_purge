@@ -11,15 +11,19 @@
         ],
         // New props for scrolly content
         scrollContent = {
-            0: "This visualization shows the distribution of DEI themes across Department of Defense titles.",
-            1: "The largest theme clusters represent the most common DEI focus areas.",
-            2: "You can see how certain themes dominate the DEI landscape within the Pentagon."
+            0: "The largest groups targeted by the Pentagon's DEI purge are women and Black people.",
+            1: "Asian Americans, Pacific Islanders, and Hispanic people trail not too far behind.",
+            2: "Native Americans and LGBTQ+ people are also significant targets.",
+            3: ' There are a fair amount of websites that relate to generic DEI content, like websites that discuss "inclusion" without mentioning any specific groups to be included ',
+            4: "And there's a large segment of websites that don't belong to any defined theme. These websites' titles alone aren't very informative. If the their full content wasn't already purged, I suspect we'd find the website was targeted because it fit into a specific theme."
         },
         // Add highlightMap prop to specify which themes to highlight at each step
         highlightMap = {
             0: ["Women", "Black"], // Example: highlight "Women" and "Black" themes
             1: ["Hispanic", "Asian or Pacific Islander"], // Example: highlight Hispanic and API themes
-            2: ["Native American", "LGBTQ"] // Example: highlight Native American and LGBTQ+ themes
+            2: ["Native American", "LGBTQ"], // Example: highlight Native American and LGBTQ+ themes
+            3: ["Generic DEI"], 
+            4: ["Other"]
         }
     } = $props();
     

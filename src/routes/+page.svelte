@@ -64,8 +64,8 @@
     <ThemeCirclePack />
 
     <p>
-        The largest groups targeted by the Pentagon's DEI purge are women and Black people, with Asian Americans, Native Americans, Hispanic, and LGBTQ+ people trailing not too far behind. There's also a fair amount of websites that relate to generic DEI content, like websites that discuss "inclusion" without mentioning any specific groups to be included. And there's a meaningful segment of websites that simple don't belong to any defined category. I suspect this is because the websites title alone isn't that informative, and if the website's full text wasn't already purged, it would be easy to see that the website was indeed targeted because it fit into a specific theme. 
-    </p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
 
     <TitleScrolly 
       titlesList={
