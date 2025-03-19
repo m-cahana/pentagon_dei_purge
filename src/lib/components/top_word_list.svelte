@@ -30,8 +30,8 @@
     {#if top_three_words}
         <div class="word-list-header">
             <span class="header-number"></span>
-            <span class="header-text">Word Combination</span>
-            <span class="header-count">Number of Titles</span>
+            <span class="header-text">Three-word phrases</span>
+            <span class="header-count">Number of titles</span>
         </div>
         <div class="word-list">
             {#each top_three_words as words, index}
