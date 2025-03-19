@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import * as d3 from 'd3';
     let top_three_words;
+    let totalCount = 0;
 
     // Helper function to format numbers with commas
     function formatNumber(num) {
@@ -9,8 +10,17 @@
     }
 
     onMount(() => {
-        d3.csv('/data/top_three_words.csv').then(data => {
-            top_three_words = data;
+        // Load the word combinations data
+        const loadWordCombinations = d3.csv('/data/top_three_words.csv');
+        
+        // Load the total document count data
+        const loadTotalDocuments = d3.csv('/data/cleaned_titles_with_themes.csv');
+        
+        // Wait for both to load
+        Promise.all([loadWordCombinations, loadTotalDocuments]).then(([wordData, documentsData]) => {
+            // Only take the first 20 word combinations
+            top_three_words = wordData.slice(0, 20);
+            totalCount = documentsData.length; // The total count is the number of rows
         });
     });
 
@@ -28,7 +38,7 @@
                 <div class="word-item">
                     <span class="word-number">{index + 1}.</span>
                     <span class="word-text">{words.words}</span>
-                    <span class="word-count">{formatNumber(words.count)}</span>
+                    <span class="word-count">{formatNumber(words.count)} ({(parseInt(words.count) / totalCount * 100).toFixed(1)}%)</span>
                 </div>
             {/each}
         </div>
