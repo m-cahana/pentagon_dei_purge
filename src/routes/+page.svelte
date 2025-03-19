@@ -3,7 +3,6 @@
     import Footer from "$lib/components/footer.svelte";
     import TopWordList from "$lib/components/top_word_list.svelte";
     
-    import CirclePack from "$lib/components/circle_packing.svelte";
     import ThemeCirclePack from "$lib/components/theme_circle_pack.svelte";
     import { onMount } from 'svelte';
     
