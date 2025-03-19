@@ -30,7 +30,7 @@
     </p>
 
     <p>
-        I thought I'd take a closer look into all the websites that were purged to systematically identify the most common themes among them. Most website urls are now defunct, so I  investigated website titles, which were preserved in an <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1'>AP database</a>. I started by checking the most common phrases in website titles:
+        I thought I'd take a closer look into all the websites that were purged to systematically identify the themes that the Pentagon is targeting for removal. Most website urls are now defunct, so I  investigated website titles, which were preserved in an <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1'>AP database</a>. I started by checking the most common phrases in titles:
     </p>
 
     <br>
@@ -56,7 +56,7 @@
 
     <p>
 
-    To classify each website into one of these themes, I used OpenAI's large language model, GPT-4o-mini. This LLM has enough contextual knowledge to recognize that titles like "Jackie Robinson" or "Tuskegee Airmen" are related to Black people, even though they don't explicitly have "black" in their text.Manually reveiwing a sample of 100 classifications, I found that the LLM's classifications were exactly the ones I would have chosen myself. Here are all websites, classified by theme according to their titles: 
+    To classify each website into one of these themes, I used OpenAI's large language model, GPT-4o-mini. This LLM has enough contextual knowledge to recognize that titles like "Jackie Robinson" or "Tuskegee Airmen" are related to Black people, even though they don't explicitly have "black" in their text. Manually reveiwing a sample of 100 classifications, I found that the LLM was consistently choosing themes that I would have chosen myself. Here are all websites, classified by theme according to their title: 
 
     </p>    
 
@@ -64,7 +64,7 @@
     <ThemeCirclePack />
 
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        The largest groups targeted by the Pentagon's DEI purge are women and Black people, with Asian Americans, Native Americans, Hispanic, and LGBTQ+ people trailing not too far behind. There's also a fair amount of websites that relate to generic DEI content, like websites that discuss "inclusion" without mentioning any specific groups to be included. And there's a meaningful segment of websites that simple don't belong to any defined category. I suspect this is because the websites title alone isn't that informative, and if the website's full text wasn't already purged, it would be easy to see that the website was indeed targeted because it fit into a specific theme. 
     </p>
 
     <TitleScrolly 
@@ -110,7 +110,7 @@
     />
     
     <p>
-        The largest groups targeted by the Pentagon's DEI purge are women and Black people, with Asian Americans, Native Americans, Hispanic, and LGBTQ+ people trailing not too far behind. There's also a fair amount of websites that relate to generic DEI content, like websites that discuss "inclusion" without mentioning any specific groups to be included. And there's a meaningful segment of websites that simple don't belong to any defined category. I suspect this is because the websites title alone isn't that informative, and if the website's full text wasn't already purged, it would be easy to see that the website was indeed targeted because it fit into a specific theme. 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     </p>
 
     <TitleScrolly 
@@ -219,8 +219,7 @@
     }
 
     .highlight {
-        font-weight: 500;
-        background-color: #FFEB3B;
+        font-weight: 600;
     }
 
 </style>

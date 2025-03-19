@@ -1,27 +1,84 @@
-<script>
+<script lang="ts">
     import * as d3 from 'd3';
     import { onMount } from 'svelte';
+    import Scrolly from "$lib/components/helpers/scrolly.svelte";
     
-    let dataPath = '/data/cleaned_titles_with_themes.csv'; // Path to the data file
-    let colorScheme = [
-                "#8BC34A", // Light Green
-                "#A5D6A7", // Lighter Green
-                "#C8E6C9", // Pale Green
-                "#E0E0E0", // Light Gray
-                "#BDBDBD", // Medium Gray
-                "#9E9E9E", // Dark Gray
-                "#EF9A9A", // Light Red
-                "#E57373", // Medium Red
-                "#90CAF9", // Light Blue
-                "#81C784", // Medium Green
-                "#4DB6AC", // Teal
-                "#FF8A65"  // Light Orange/Coral
-            ];
+    // Props for customization
+    let {
+        dataPath = '/data/cleaned_titles_with_themes.csv', // Path to the data file
+        colorScheme = [
+            "#8BC34A", // Light Green
+            "#A5D6A7", // Lighter Green
+            "#C8E6C9", // Pale Green
+            "#E0E0E0", // Light Gray
+            "#BDBDBD", // Medium Gray
+            "#9E9E9E", // Dark Gray
+            "#EF9A9A", // Light Red
+            "#E57373", // Medium Red
+            "#90CAF9", // Light Blue
+            "#81C784", // Medium Green
+            "#4DB6AC", // Teal
+            "#FF8A65"  // Light Orange/Coral
+        ],
+        // New props for scrolly content
+        scrollContent = {
+            0: "This visualization shows the distribution of DEI themes across Department of Defense titles.",
+            1: "The largest theme clusters represent the most common DEI focus areas.",
+            2: "You can see how certain themes dominate the DEI landscape within the Pentagon."
+        }
+    } = $props();
     
-    let container;
-    let width;
-    let height;
-    let data = {name: "root", children: []};
+    // Extract section indices from scrollContent
+    let sectionIndices = $derived(Object.keys(scrollContent).map(Number).sort((a, b) => a - b));
+    
+    // Add proper type for container to fix "implicit any" error
+    let container: HTMLDivElement;
+    let width: number;
+    let height: number;
+    
+    // Define proper type for data structure
+    interface ThemeChild {
+        name: string;
+        value: number;
+    }
+    
+    interface ThemeItem {
+        name: string;
+        value: number;
+        percentage: string;
+        formattedCount: string;
+        children: ThemeChild[];
+    }
+    
+    interface DataStructure {
+        name: string;
+        children: ThemeItem[];
+    }
+    
+    let data: DataStructure = {name: "root", children: []};
+    let value = $state(0);
+    let allNodes: any[] = [];
+    let themeNodes: any[] = [];
+    
+    interface ThemeNode {
+        depth: number;
+        data: {
+            name: string;
+            value: number;
+            percentage: string;
+            formattedCount: string;
+            children?: any[];
+        };
+        r: number;
+        x: number;
+        y: number;
+    }
+    
+    interface DataItem {
+        title: string;
+        theme: string;
+        [key: string]: any;
+    }
     
     // Function to handle window resize
     function handleResize() {
@@ -45,7 +102,7 @@
     }
 
     // Helper function to format numbers with commas
-    function formatNumber(num) {
+    function formatNumber(num: number): string {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
@@ -60,7 +117,7 @@
         d3.csv(dataPath)
             .then(processData)
             .then(createVisualization)
-            .catch(error => {
+            .catch((error: any) => {
                 console.error("Error loading CSV:", error);
             });
             
@@ -71,9 +128,9 @@
     });
 
     // Process the CSV data into a hierarchical structure for circle packing
-    function processData(csvData) {
+    function processData(csvData: DataItem[]) {
         // Group titles by theme
-        const themeGroups = d3.group(csvData, d => d.theme || "Unknown");
+        const themeGroups = d3.group(csvData, (d: DataItem) => d.theme || "Unknown");
 
         const totalTitles = csvData.length;
         
@@ -85,7 +142,7 @@
                 value: titles.length,
                 percentage: (titles.length / totalTitles * 100).toFixed(1),
                 formattedCount: formatNumber(titles.length),
-                children: titles.map(title => ({
+                children: titles.map((title: DataItem) => ({
                     name: title.title,
                     value: 1
                 }))
@@ -96,6 +153,50 @@
         data.children.sort((a, b) => b.value - a.value);
         
         return data;
+    }
+
+    // Function to highlight themes based on current scroll position
+    function highlightThemes(currentValue: number) {
+        // Reset all themes to default state
+        d3.selectAll("circle")
+            .transition()
+            .duration(300)
+            .attr("fill-opacity", 0.4);
+            
+        // Check if we have specific themes to highlight for this section
+        // For now, simple implementation: highlight a different portion of themes
+        // based on scroll index - this should be customizable via props in the future
+        if (themeNodes.length > 0) {
+            const themesToHighlight = getThemesToHighlight(currentValue);
+            
+            themesToHighlight.forEach(themeName => {
+                d3.select(`.circle-${themeName.replace(/\s+/g, '-').toLowerCase()}`)
+                    .transition()
+                    .duration(300)
+                    .attr("fill-opacity", 0.9)
+                    .attr("stroke-width", 2);
+            });
+        }
+    }
+    
+    // Determine which themes to highlight based on scroll position
+    function getThemesToHighlight(currentValue: number): string[] {
+        // This is just a simple example - you would define your highlighting logic here
+        // For now, let's highlight different themes at each scroll step
+        if (themeNodes.length === 0) return [];
+        
+        // Get the number of themes available
+        const themes = themeNodes.map(node => node.data.name);
+        
+        // Number of themes to highlight per section
+        const themesPerSection = Math.ceil(themes.length / sectionIndices.length);
+        
+        // Calculate the starting and ending indices for this section
+        const startIdx = (currentValue % sectionIndices.length) * themesPerSection;
+        const endIdx = Math.min(startIdx + themesPerSection, themes.length);
+        
+        // Return the themes for this section
+        return themes.slice(startIdx, endIdx);
     }
 
     function createVisualization() {
@@ -169,7 +270,7 @@
                 // Centers the nodes in the available space
                 .force('center', d3.forceCenter(width / 2, height / 2))
                 // Prevents node overlap with minimal padding
-                .force('collision', d3.forceCollide().radius(d => d.r + 3).strength(0.8))
+                .force('collision', d3.forceCollide().radius((d: any) => d.r + 3).strength(0.8))
                 // Add boundary force to keep circles within container
                 .force('x', d3.forceX(width / 2).strength(0.1))
                 .force('y', d3.forceY(height / 2).strength(0.1))
@@ -193,24 +294,24 @@
         };
         
         // Generate nodes with force-directed layout
-        const allNodes = createForceLayout();
-        const themeNodes = allNodes.filter(node => node.depth === 1);
+        allNodes = createForceLayout();
+        themeNodes = allNodes.filter(node => node.depth === 1);
         
         // Create a container for all circles
         const nodes = svg.append("g")
             .selectAll("g")
             .data(allNodes)
             .join("g")
-            .attr("transform", d => `translate(${d.x},${d.y})`);
+            .attr("transform", (d: any) => `translate(${d.x},${d.y})`);
         
         // Add circles
         nodes.append("circle")
-            .attr("r", d => d.r)
-            .attr("fill", d => d.depth === 1 ? color(d.data.name) : "white")
-            .attr("fill-opacity", d => d.depth === 1 ? 0.8 : 0)
-            .attr("stroke", d => d.depth === 1 ? "#fff" : "none")
-            .attr("stroke-width", d => d.depth === 1 ? 1 : 0)
-            .attr("class", d => `circle-${d.data.name.replace(/\s+/g, '-').toLowerCase()}`)
+            .attr("r", (d: any) => d.r)
+            .attr("fill", (d: any) => d.depth === 1 ? color(d.data.name) : "white")
+            .attr("fill-opacity", (d: any) => d.depth === 1 ? 0.4 : 0)  // Start with reduced opacity
+            .attr("stroke", (d: any) => d.depth === 1 ? "#fff" : "none")
+            .attr("stroke-width", (d: any) => d.depth === 1 ? 1 : 0)
+            .attr("class", (d: any) => `circle-${d.data.name.replace(/\s+/g, '-').toLowerCase()}`)
             
         // Create a new group specifically for labels that will be on top of everything
         const labelsGroup = svg.append("g")
@@ -254,50 +355,59 @@
                     .text(`${d.data.formattedCount} (${d.data.percentage}%)`);
             }
         });
-            
-        // Add a tooltip
-        const tooltip = d3.select("body").select(".theme-tooltip") || 
-            d3.select("body").append("div")
-                .attr("class", "theme-tooltip")
-                .style("position", "absolute")
-                .style("padding", "8px")
-                .style("background", "rgba(255, 255, 255, 0.9)")
-                .style("border", "1px solid #ddd")
-                .style("border-radius", "4px")
-                .style("pointer-events", "none")
-                .style("font-size", "14px")
-                .style("font-family", "Arial, sans-serif")
-                .style("box-shadow", "0 2px 4px rgba(0, 0, 0, 0.1)")
-                .style("z-index", "100")
-                .style("text-align", "center")
-                .style("opacity", 0);
+        
+        // Initial highlight based on current value
+        highlightThemes(value);
     }
+    
+    // Replace legacy reactive statement with $effect
+    $effect(() => {
+        if (value !== undefined && themeNodes.length > 0) {
+            highlightThemes(value);
+        }
+    });
 </script>
 
-<div class="theme-circle-pack">
-    
+<section id="theme-circle-pack">
+    <!-- Fixed visualization that stays in the background -->
     <div class="visualization-container">
         <div class="theme-circle-pack__container" bind:this={container}>
-            <!-- Circle packing visualization will be rendered here -->
+            <!-- Circle packing visualization rendered here -->
         </div>
     </div>
-</div>
+
+    <div class="spacer"></div>
+    
+    <!-- Scrolly component for scroll-activated content -->
+    <Scrolly bind:value>
+        {#each sectionIndices as section}
+            {@const active = value === section}
+            <div class="step" class:active>
+                <div class="step-content">
+                    <p>{scrollContent[section]}</p>
+                </div>
+            </div>
+        {/each}
+    </Scrolly>
+    
+    <div class="spacer"></div>
+</section>
 
 <style>
-    .theme-circle-pack {
+    #theme-circle-pack {
+        position: relative;
         width: 100%;
         max-width: 1000px;
         margin: 0 auto;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
     
     .visualization-container {
-        position: relative;
+        position: sticky;
+        top: 4em;
+        z-index: 1;
         width: 100%;
         height: auto;
+        background-color: white;
     }
     
     .theme-circle-pack__container {
@@ -311,13 +421,38 @@
         align-items: center;
     }
     
-    h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 24px;
-        width: 100%;
-        font-family: Helvetica !important;
-        font-weight: 300 !important;
+    .spacer {
+        height: 75vh;
+    }
+    
+    .step {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 20px;
+        z-index: 5;
+        position: relative;
+    }
+    
+    .step-content {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        padding: 20px;
+        max-width: 350px;
+        pointer-events: auto;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-right: 5%;
+    }
+    
+    .step p {
+        margin: 0;
+        font-family: "Arial";
+        font-weight: 200;
+    }
+    
+    .active {
+        font-weight: bold;
     }
     
     /* Label styling */
@@ -328,24 +463,21 @@
         font-family: Arial !important;
     }
     
+    /* Make sure the Scrolly component has proper z-index */
+    :global(.scrolly-container) {
+        position: relative;
+        z-index: 10; /* Higher than both visualization and steps */
+    }
+    
     /* Media query for small screens */
     @media (max-width: 768px) {
-        .theme-circle-pack {
-            padding: 10px;
-        }
-        
-        h1 {
-            font-size: 20px;
-        }
-        
         .theme-circle-pack__container {
             height: 60vh;
         }
         
-        /* Adjust label text sizes for smaller screens */
-        :global(.theme-title),
-        :global(.theme-count) {
-            font-weight: 500; /* Slightly reduced weight for better readability at small sizes */
+        .step-content {
+            max-width: 280px;
+            padding: 15px;
         }
     }
     
@@ -353,6 +485,11 @@
     @media (max-width: 480px) {
         .theme-circle-pack__container {
             height: 50vh;
+        }
+        
+        .step-content {
+            max-width: 240px;
+            padding: 12px;
         }
     }
 </style> 
