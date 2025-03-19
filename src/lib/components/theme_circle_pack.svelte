@@ -7,24 +7,19 @@
     let {
         dataPath = '/data/cleaned_titles_with_themes.csv', // Path to the data file
         colorScheme = [
-            "#8BC34A", // Light Green
-            "#A5D6A7", // Lighter Green
-            "#C8E6C9", // Pale Green
-            "#E0E0E0", // Light Gray
-            "#BDBDBD", // Medium Gray
-            "#9E9E9E", // Dark Gray
-            "#EF9A9A", // Light Red
-            "#E57373", // Medium Red
-            "#90CAF9", // Light Blue
-            "#81C784", // Medium Green
-            "#4DB6AC", // Teal
-            "#FF8A65"  // Light Orange/Coral
+            "#4d784e" // military color scheme
         ],
         // New props for scrolly content
         scrollContent = {
             0: "This visualization shows the distribution of DEI themes across Department of Defense titles.",
             1: "The largest theme clusters represent the most common DEI focus areas.",
             2: "You can see how certain themes dominate the DEI landscape within the Pentagon."
+        },
+        // Add highlightMap prop to specify which themes to highlight at each step
+        highlightMap = {
+            0: ["Women", "Black"], // Example: highlight "Women" and "Black" themes
+            1: ["Hispanic", "Asian or Pacific Islander"], // Example: highlight Hispanic and API themes
+            2: ["Native American", "LGBTQ"] // Example: highlight Native American and LGBTQ+ themes
         }
     } = $props();
     
@@ -157,46 +152,39 @@
 
     // Function to highlight themes based on current scroll position
     function highlightThemes(currentValue: number) {
-        // Reset all themes to default state
-        d3.selectAll("circle")
-            .transition()
-            .duration(300)
-            .attr("fill-opacity", 0.4);
-            
-        // Check if we have specific themes to highlight for this section
-        // For now, simple implementation: highlight a different portion of themes
-        // based on scroll index - this should be customizable via props in the future
-        if (themeNodes.length > 0) {
-            const themesToHighlight = getThemesToHighlight(currentValue);
-            
+        // Get themes to highlight for this scroll position
+        const themesToHighlight = getThemesToHighlight(currentValue);
+        
+        // First, mark all themes as non-highlighted
+        d3.selectAll(".theme-circle")
+            .classed("highlighted", false)
+            .classed("dimmed", true);
+        
+        // Then, highlight the specific themes
+        if (themesToHighlight.length > 0) {
             themesToHighlight.forEach(themeName => {
-                d3.select(`.circle-${themeName.replace(/\s+/g, '-').toLowerCase()}`)
-                    .transition()
-                    .duration(300)
-                    .attr("fill-opacity", 0.9)
-                    .attr("stroke-width", 2);
+                // Use case-insensitive substring matching for more flexibility
+                themeNodes.forEach(node => {
+                    const nodeName = node.data.name;
+                    // Check if the theme name contains the string to highlight (case insensitive)
+                    if (nodeName.toLowerCase().includes(themeName.toLowerCase())) {
+                        d3.select(`.circle-${nodeName.replace(/\s+/g, '-').toLowerCase()}`)
+                            .classed("highlighted", true)
+                            .classed("dimmed", false);
+                            
+                        // Also highlight the associated label
+                        d3.select(`.label-${nodeName.replace(/\s+/g, '-').toLowerCase()}`)
+                            .classed("highlighted", true);
+                    }
+                });
             });
         }
     }
     
-    // Determine which themes to highlight based on scroll position
+    // Get themes to highlight from props based on current scroll value
     function getThemesToHighlight(currentValue: number): string[] {
-        // This is just a simple example - you would define your highlighting logic here
-        // For now, let's highlight different themes at each scroll step
-        if (themeNodes.length === 0) return [];
-        
-        // Get the number of themes available
-        const themes = themeNodes.map(node => node.data.name);
-        
-        // Number of themes to highlight per section
-        const themesPerSection = Math.ceil(themes.length / sectionIndices.length);
-        
-        // Calculate the starting and ending indices for this section
-        const startIdx = (currentValue % sectionIndices.length) * themesPerSection;
-        const endIdx = Math.min(startIdx + themesPerSection, themes.length);
-        
-        // Return the themes for this section
-        return themes.slice(startIdx, endIdx);
+        // Use themes from highlightMap prop if available, or return empty array
+        return highlightMap[currentValue] || [];
     }
 
     function createVisualization() {
@@ -304,14 +292,20 @@
             .join("g")
             .attr("transform", (d: any) => `translate(${d.x},${d.y})`);
         
-        // Add circles
+        // Add circles with CSS classes for styling
         nodes.append("circle")
             .attr("r", (d: any) => d.r)
             .attr("fill", (d: any) => d.depth === 1 ? color(d.data.name) : "white")
-            .attr("fill-opacity", (d: any) => d.depth === 1 ? 0.4 : 0)  // Start with reduced opacity
             .attr("stroke", (d: any) => d.depth === 1 ? "#fff" : "none")
             .attr("stroke-width", (d: any) => d.depth === 1 ? 1 : 0)
-            .attr("class", (d: any) => `circle-${d.data.name.replace(/\s+/g, '-').toLowerCase()}`)
+            .attr("class", (d: any) => {
+                // Only add styling classes to theme circles (depth === 1)
+                if (d.depth === 1) {
+                    const themeClass = `circle-${d.data.name.replace(/\s+/g, '-').toLowerCase()}`;
+                    return `theme-circle ${themeClass} dimmed`; // Start dimmed by default
+                }
+                return "";
+            });
             
         // Create a new group specifically for labels that will be on top of everything
         const labelsGroup = svg.append("g")
@@ -321,9 +315,11 @@
         // Re-create the labels in this top-level group
         themeNodes.forEach(d => {
             if (d.depth === 1) {
+                const themeClass = `label-${d.data.name.replace(/\s+/g, '-').toLowerCase()}`;
+                
                 const labelGroup = labelsGroup.append("g")
                     .attr("transform", `translate(${d.x},${d.y})`)
-                    .attr("class", "theme-label-group")
+                    .attr("class", `theme-label-group ${themeClass}`)
                     .style("pointer-events", "none");
                 
                 // Calculate font size based on circle radius and screen size
@@ -455,12 +451,36 @@
         font-weight: bold;
     }
     
+    /* Circle styling with CSS classes */
+    :global(.theme-circle) {
+        transition: all 0.3s ease;
+    }
+    
+    :global(.theme-circle.dimmed) {
+        opacity: 0.3; /* transparent when not highlighted */
+    }
+    
+    :global(.theme-circle.highlighted) {
+        opacity: 0.95; /* Almost fully opaque when highlighted */
+        stroke-width: 2px; /* Thicker border */
+    }
+    
     /* Label styling */
     :global(.theme-title),
     :global(.theme-count) {
         fill: #1e1d1d;
         font-weight: 400;
         font-family: Arial !important;
+        transition: opacity 0.3s ease;
+    }
+    
+    :global(.theme-label-group) {
+        opacity: 0.5; /* Labels slightly dimmed by default */
+        transition: opacity 0.3s ease;
+    }
+    
+    :global(.theme-label-group.highlighted) {
+        opacity: 1; /* Full opacity for highlighted labels */
     }
     
     /* Make sure the Scrolly component has proper z-index */
