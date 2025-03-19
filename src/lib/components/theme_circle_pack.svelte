@@ -4,18 +4,18 @@
     
     let dataPath = '/data/cleaned_titles_with_themes.csv'; // Path to the data file
     let colorScheme = [
-                "#3F3B2E", // Jacko Bean
-                "#A4895C", // Café Au Lait
-                "#5B533F", // Olive Drab Camouflage
-                "#736246", // Boy Red
-                "#96794E", // Pale Brown
-                "#252B1F", // Pine Tree
-                "#57453B", // Dark Brown (from French Camouflage)
-                "#8A705D", // Medium Brown (from French Camouflage)
-                "#534E3B", // Olive Gray (from French Camouflage)
-                "#4A5A3F", // Army Green (from Green Camouflage)
-                "#8E965B", // Olive Green (from Green Camouflage)
-                "#46B030"  // Military Green (from Bright Camouflage)
+                "#8BC34A", // Light Green
+                "#A5D6A7", // Lighter Green
+                "#C8E6C9", // Pale Green
+                "#E0E0E0", // Light Gray
+                "#BDBDBD", // Medium Gray
+                "#9E9E9E", // Dark Gray
+                "#EF9A9A", // Light Red
+                "#E57373", // Medium Red
+                "#90CAF9", // Light Blue
+                "#81C784", // Medium Green
+                "#4DB6AC", // Teal
+                "#FF8A65"  // Light Orange/Coral
             ];
     
     let container;

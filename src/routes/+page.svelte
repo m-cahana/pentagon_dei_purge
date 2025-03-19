@@ -22,19 +22,43 @@
     <div class="subtitle">March 2025</div>
 
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        On the first day of his second term in office, President Trump signed an <a href = 'https://www.whitehouse.gov/presidential-actions/2025/01/ending-radical-and-wasteful-government-dei-programs-and-preferencing/'>executive order</a> calling for an end to government DEI programs, which he claimed were "radical", "wasteful", and lead to "shameful discrimination". In turn, the Pentagon released a <a href = 'https://www.defense.gov/News/News-Releases/News-Release-View/Article/260000/pentagon-to-end-radical-and-wasteful-dei-programs-and-preferencing-in-the-defense-department/'>memorandum</a> calling for a "digital content refresh" across all Department of Defense public platforms. Any articles, photos, and videos promoting DEI were ordered to be removed by March 5th.
     </p>
 
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        By March 7th, the Pentagon had flagged 26,000 images for removal across websites from every branch of the military. Outlets quickly noted that websites about the <a href = 'https://apnews.com/article/dei-purge-images-pentagon-diversity-women-black-8efcfaec909954f4a24bad0d49c78074'>Tuskegee Airmen</a>, <a href = 'https://www.washingtonpost.com/investigations/2025/03/17/pentagon-dei-native-american-iwo-jima/'>Navajo code talkers</a> and <a href = 'https://www.axios.com/2025/03/19/jackie-robinson-military-service-webpage-dod-dei'>Jackie Robinson</a> were among the sites purged. Websites about <a href = 'https://www.forbes.com/sites/conormurray/2025/03/07/enola-gay-aircraft-and-other-historic-items-inaccurately-targeted-under-pentagons-anti-dei-purge/'>Enola Gay</a> - the aircraft that dropped an atomic bomb on Hiroshima - were also removed, presumably because they were mistakenly flagged as LGBTQ+ content. 
     </p>
 
+    <p>
+        I thought I'd take a closer look into all the websites that were purged to systematically identify the most common themes among them. Most website urls are now defunct, so I  investigated website titles, which were preserved in an <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1'>AP database</a>. I started by checking the most common phrases in website titles:
+    </p>
+
+    <br>
 
     <TopWordList />
 
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Looking through these top phrases and some additional, less common ones, I figured websites could be grouped into a few different themes: 
     </p>
+
+    <ol>
+        <li>Websites related to <span class = 'highlight'>Women</span></li>
+        <li>Websites related to <span class = 'highlight'>Black</span> people</li>
+        <li>Websites related to <span class = 'highlight'>Hispanic</span> people</li>
+        <li>Websites related to <span class = 'highlight'>Asian Americans or Pacific Islanders</span></li>
+        <li>Websites related to <span class = 'highlight'>Native Americans</span></li>
+        <li>Websites related to <span class = 'highlight'>LGBTQ+</span> people</li>
+        <li>Websites related to <span class = 'highlight'>other ethnicities & religions</span></li>
+        <li>Websites related to <span class = 'highlight'>generic DEI</span> content</li>
+        <li>Websites belonging to some <span class = 'highlight'>other</span> category</li>
+        
+    </ol>
+
+    <p>
+
+    To classify each website into one of these themes, I used OpenAI's large language model, GPT-4o-mini. This LLM has enough contextual knowledge to recognize that titles like "Jackie Robinson" or "Tuskegee Airmen" are related to Black people, even though they don't explicitly have "black" in their text.Manually reveiwing a sample of 100 classifications, I found that the LLM's classifications were exactly the ones I would have chosen myself. Here are all websites, classified by theme according to their titles: 
+
+    </p>    
 
 
     <ThemeCirclePack />
@@ -86,7 +110,7 @@
     />
     
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        The largest groups targeted by the Pentagon's DEI purge are women and Black people, with Asian Americans, Native Americans, Hispanic, and LGBTQ+ people trailing not too far behind. There's also a fair amount of websites that relate to generic DEI content, like websites that discuss "inclusion" without mentioning any specific groups to be included. And there's a meaningful segment of websites that simple don't belong to any defined category. I suspect this is because the websites title alone isn't that informative, and if the website's full text wasn't already purged, it would be easy to see that the website was indeed targeted because it fit into a specific theme. 
     </p>
 
     <TitleScrolly 
@@ -186,4 +210,17 @@
         font-weight: 300;
         margin-top: 0;
     }
+
+    ol {
+        text-align: left;
+        margin-left: 2rem;
+        font-family: "Arial";
+        font-weight: 300;
+    }
+
+    .highlight {
+        font-weight: 500;
+        background-color: #FFEB3B;
+    }
+
 </style>
