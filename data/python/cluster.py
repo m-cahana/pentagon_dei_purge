@@ -7,13 +7,6 @@ from tqdm import tqdm
 # set your OpenAI API key
 client = OpenAI(api_key=api_key)
 
-# Define the cost per 1000 tokens for gpt-4o-mini (update with actual values from OpenAI's pricing)
-COST_PER_1M_TOKENS = 0.150  # gpt-4o-mini
-
-# Initialize a cumulative cost tracker
-total_cost = 0.0
-threshold = 1.0
-
 # **************
 # data read-in
 # **************
@@ -48,7 +41,6 @@ unique_df = clean_df.drop_duplicates(subset=['title'])
 # **************
 
 def categorize_text_by_theme(text):
-    global total_cost, threshold  # Access the global cost tracker and threshold
 
     # Define the categorization prompt
     prompt = f"""
@@ -76,16 +68,6 @@ def categorize_text_by_theme(text):
             {"role": "system", "content": prompt},
         ]
     )
-    # Extract token usage and calculate cost
-    tokens_used = response.usage.total_tokens
-
-    cost = (tokens_used / 1e6) * COST_PER_1M_TOKENS
-    total_cost += cost  # Add this call's cost to the cumulative tracker
-
-    # Print cumulative cost only if it crosses the current threshold
-    if total_cost >= threshold:
-        print(f"Cumulative cost has reached: ${total_cost:.2f}")
-        threshold += 1.0  # Increment the threshold to the next dollar amount
     
     # Extract and return the response
     return response.choices[0].message.content.strip()
@@ -104,7 +86,7 @@ if not os.path.exists('../../static/data/theme_classified_titles.csv'):
 
 
 def categorize_text_by_type(text):
-    global total_cost, threshold  # Access the global cost tracker and threshold
+
     # Define the categorization prompt
     prompt = f"""
     You are a text categorization assistant. Your task is to categorize website titles from the military. The titles have recently been erased, and I want to group them into categories. You need to group each title into one of the following groups based on its content:
@@ -129,17 +111,6 @@ def categorize_text_by_type(text):
         ]
     )
 
-    # Extract token usage and calculate cost
-    tokens_used = response.usage.total_tokens
-
-    cost = (tokens_used / 1e6) * COST_PER_1M_TOKENS
-    total_cost += cost  # Add this call's cost to the cumulative tracker
-
-    # Print cumulative cost only if it crosses the current threshold
-    if total_cost >= threshold:
-        print(f"Cumulative cost has reached: ${total_cost:.2f}")
-        threshold += 1.0  # Increment the threshold to the next dollar amount
-    
     # Extract and return the response
     return response.choices[0].message.content.strip()
 

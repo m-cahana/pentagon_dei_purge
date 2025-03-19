@@ -18,7 +18,7 @@
 </script>
 
 <main>
-	<h1>What is the Trump Administration trying to erase through its DEI purge?</h1>
+	<h1>What Exactly Is the Trump Administration Trying to Erase Through Its DEI Purge?</h1>
     <div class="subtitle">March 2025</div>
 
     <p>
