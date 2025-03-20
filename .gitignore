@@ -92,3 +92,7 @@ coverage/
 
 # API files
 **/api.py
+
+# DO NOT exclude data files
+!static/data/
+!public/data/
