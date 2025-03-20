@@ -82,9 +82,11 @@
         'African American Heritage Open Mic Night',
         'Airmen sample soul food',
         'Goodfellow Celebrates Juneteenth',
+        'Americans of all colors contributed to civil rights movement',
         'Martin Luther King Jr. special observance',
         '2nd Annual Soul Food Taste',
         'Vance Marchbanks Jr.',
+        'Display About Slavery',
         'Civil rights activist shares legacy of love, community and action amid anecdotes of working with Dr. Martin Luther King Jr.',
         "Respecting slaves' value at Mount Vernon",
         'Miramar pauses to acknowledge selfless service of Tuskegee Airmen',
@@ -100,31 +102,32 @@
         'Martin Luther King Jr. special observance',
       ],
       1: [
-        'African American/Black Innovations ... where would we be without them?',
-        'FACES of MCIPAC - African American U.S. Marines share their stories',
-      ],
-      2: [
         'Airmen sample soul food',
         'Gospel celebration',
         '2nd Annual Soul Food Taste',
       ],
-      3: [
-         "Respecting slaves' value at Mount Vernon",
-         'Civil rights activist shares legacy of love, community and action amid anecdotes of working with Dr. Martin Luther King Jr.',
-
+      2: [
+        'African American/Black Innovations ... where would we be without them?',
+        'FACES of MCIPAC - African American U.S. Marines share their stories',
       ],
-      4: [
+      3: [
          'Miramar pauses to acknowledge selfless service of Tuskegee Airmen',
         'Elayne Arrington',
         'Vance Marchbanks Jr.',
-      ]
+      ],
+      4: [
+         "Respecting slaves' value at Mount Vernon",
+         'Civil rights activist shares legacy of love, community and action amid anecdotes of working with Dr. Martin Luther King Jr.',
+         'Display About Slavery',
+         'Americans of all colors contributed to civil rights movement',
+      ],
     }}
     highlightText={{
-      0: ["Explicit Heritage Events", "Mentions of cultural celebrations like Black History Month, Juneteenth, and MLK Day are gone."],
-      1: ["Black Soldiers Removed", "So are mentions of soldiers that call out their Blackness"],
-      2: ["Cultural References Purged", "Artifacts of Black culture, like soul food and gospel music, are also removed."],
-      3: ["Historical Facts Deleted", "And the purge has even extended to basic facts of Black history, like slavery and civil rights activism."],
-      4: ["Military Heroes Erased", "Again, military heroes have been erased simply for being Black."]
+      0: ["Explicit heritage events", "Mentions of holidays like Black History Month, Juneteenth, and MLK Day are gone."],
+      1: ["Everyday celebrations of heritage and ethnicity", "So are artifacts of Black culture, like soul food and gospel music."],
+      2: ["Mentions of personnel that highlight their ethnicity", "When soldiers are referred to in a way that calls out their Blackness, their web footprint is removed."],
+      3: ["Personel whose ethnicity isn't explicitly mentioned", "And even when their Blackness isn't mentioned, military heroes have been erased simply for being Black."],
+      4: ["Facts of history that relate to Black people", "The administration's DEI purge has extended to basic facts of Black history as well, like slavery and civil rights activism."],
     }}
   />
   
@@ -134,7 +137,7 @@
     </p>
 
     <p>
-        Below you can see all of the Pentagon's purged website titles, broken down by theme and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes.csv'>csv</a>). There are many more striking examples of purged content to be found here. For example: titles about Vietnamese refugees, former immigrants grateful for a career opportunity, [insert], and even Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
+        Below you can see all of the Pentagon's purged website titles, broken down by theme and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes.csv'>csv</a>). There are many more striking examples of purged content to be found here. For example: titles about Vietnamese refugees, and former immigrants grateful for a career opportunity, and even Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
     </p>
 
     <TitleSearch />
