@@ -38,7 +38,7 @@
     <TopWordList />
 
     <p>
-        Looking through these top phrases and some additional, less common ones, it seems that websites can be grouped into a few different themes: 
+        Looking through these top phrases and some additional, less common ones, it seems that websites can be grouped into a handful of different themes: 
     </p>
 
     <ol>
@@ -176,10 +176,9 @@
     }
 
     .highlight {
-        padding: 1px 2px;
-		box-decoration-break: clone;
-		-webkit-box-decoration-break: clone;
-        background-color: var(--color-military-green);
+        font-weight: 550;
+        text-decoration: underline;
+        padding: 0 1px;
     }
 
 </style>

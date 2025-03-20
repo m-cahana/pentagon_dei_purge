@@ -30,7 +30,7 @@
     {#if top_three_words}
         <div class="word-list-header">
             <span class="header-number"></span>
-            <span class="header-text">Three-word phrases</span>
+            <span class="header-text">Top three-word phrases</span>
             <span class="header-count">Number of titles</span>
         </div>
         <div class="word-list">
@@ -56,15 +56,7 @@
         max-width: 600px;
         margin: 0 auto;
         text-align: left;
-        font-family: Arial, sans-serif;
         padding: 0 20px;
-    }
-
-    h2 {
-        margin-bottom: 10px;
-        text-align: center;
-        font-family: Helvetica !important;
-        font-weight: 300 !important;
     }
 
     .word-list-header {
@@ -74,6 +66,7 @@
         font-weight: bold;
         border-bottom: 1px solid #ddd;
         padding: 0 10px;
+        font-weight: 550;
     }
 
     .header-number {
@@ -104,6 +97,7 @@
         gap: 2px;
         text-align: left;
         padding: 0 10px;
+        font-weight: 400;
     }
 
     .word-number {
