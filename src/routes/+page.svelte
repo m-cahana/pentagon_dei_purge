@@ -58,7 +58,7 @@
 
     <p>
 
-    To classify each website into one of these themes, I used OpenAI's large language model, GPT-4o-mini. This LLM has enough contextual knowledge to recognize that titles like "Jackie Robinson" or "Tuskegee Airmen" are related to Black people, even though they don't explicitly have "black" in their text. After manually reviewing a sample of 100 classifications, I found that the LLM was consistently choosing the themes that I would have chosen myself. Here are all websites, classified by theme according to their title: 
+    To classify each website into one of these themes, I used a large language model, which has enough contextual knowledge to recognize that titles like "Jackie Robinson" or "Tuskegee Airmen" are related to Black people, even though they don't explicitly have "black" in their text. After manually reviewing a sample of 100 classifications, I found that the LLM was consistently choosing the themes that I would have chosen myself. Here are all websites, classified by theme according to their title: 
 
     </p>    
 
