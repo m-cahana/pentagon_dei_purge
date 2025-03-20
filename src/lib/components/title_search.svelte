@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import * as d3 from 'd3';
+    import { getDataPath } from '$lib/utils/paths';
     
     // State with minimal typing
     let allData = [];
@@ -61,7 +62,10 @@
     function loadData() {
         isLoading = true;
         
-        d3.csv('/data/cleaned_titles_with_themes.csv')
+        // Use our utility function to get the proper path
+        const dataFilePath = getDataPath('cleaned_titles_with_themes.csv');
+        
+        d3.csv(dataFilePath)
             .then(data => {
                 // Data comes pre-parsed with columns as properties
                 console.log("CSV loaded successfully:", data.length, "rows");

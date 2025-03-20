@@ -2,6 +2,7 @@
 	import * as d3 from 'd3';
 	import { onMount } from 'svelte';
 	import Scrolly from "$lib/components/helpers/scrolly.svelte";
+	import { getDataPath } from '$lib/utils/paths';
 	
 	// Props for customization
 
@@ -34,7 +35,10 @@
 	let sampleTitles = $state([]);
 
 	onMount(() => {
-		d3.csv('/data/cleaned_titles_with_keywords.csv').then((data) => {
+		// Use our utility function to get the proper path
+		const dataFilePath = getDataPath('cleaned_titles_with_keywords.csv');
+		
+		d3.csv(dataFilePath).then((data) => {
 			sampleTitles = data.filter(website => titlesList.includes(website.title));
 			// remove duplicates based on title only
 			sampleTitles = sampleTitles.filter((value, index, self) =>

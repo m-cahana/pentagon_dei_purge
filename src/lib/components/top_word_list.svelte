@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import * as d3 from 'd3';
+    import { getDataPath } from '$lib/utils/paths';
     let top_three_words;
     let totalCount = 0;
 
@@ -10,19 +11,17 @@
     }
 
     onMount(() => {
-        // Get the base URL for GitHub Pages or development environment
-        const basePath = import.meta.env?.BASE_URL || '';
+        // Use our utility function to get the proper paths
+        const wordCombinationsPath = getDataPath('top_three_words.csv');
+        const documentsPath = getDataPath('cleaned_titles_with_themes.csv');
         
-        // Ensure proper path construction without double slashes
-        const dataPath = basePath ? `${basePath.replace(/\/$/, '')}/data/` : 'data/';
-        
-        console.log(`Loading from: ${dataPath}top_three_words.csv`);
+        console.log(`Loading data from: ${wordCombinationsPath}`);
         
         // Load the word combinations data
-        const loadWordCombinations = d3.csv(`${dataPath}top_three_words.csv`);
+        const loadWordCombinations = d3.csv(wordCombinationsPath);
         
         // Load the total document count data
-        const loadTotalDocuments = d3.csv(`${dataPath}cleaned_titles_with_themes.csv`);
+        const loadTotalDocuments = d3.csv(documentsPath);
         
         // Wait for both to load
         Promise.all([loadWordCombinations, loadTotalDocuments]).then(([wordData, documentsData]) => {

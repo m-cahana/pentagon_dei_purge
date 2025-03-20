@@ -2,6 +2,7 @@
     import * as d3 from 'd3';
     import { onMount } from 'svelte';
     import Scrolly from "$lib/components/helpers/scrolly.svelte";
+    import { getFullPath } from '$lib/utils/paths';
     
     // Props for customization
     let {
@@ -112,8 +113,12 @@
         // Add resize listener
         window.addEventListener('resize', handleResize);
         
+        // Use our utility function to handle the path from props
+        const fullDataPath = getFullPath(dataPath);
+        console.log(`Loading data from: ${fullDataPath}`);
+        
         // Load and process the data
-        d3.csv(dataPath)
+        d3.csv(fullDataPath)
             .then(processData)
             .then(createVisualization)
             .catch((error: any) => {
