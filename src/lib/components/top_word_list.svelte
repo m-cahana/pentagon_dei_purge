@@ -10,17 +10,27 @@
     }
 
     onMount(() => {
+        // Get the base URL for GitHub Pages or development environment
+        const basePath = import.meta.env?.BASE_URL || '';
+        
+        // Ensure proper path construction without double slashes
+        const dataPath = basePath ? `${basePath.replace(/\/$/, '')}/data/` : 'data/';
+        
+        console.log(`Loading from: ${dataPath}top_three_words.csv`);
+        
         // Load the word combinations data
-        const loadWordCombinations = d3.csv('/data/top_three_words.csv');
+        const loadWordCombinations = d3.csv(`${dataPath}top_three_words.csv`);
         
         // Load the total document count data
-        const loadTotalDocuments = d3.csv('/data/cleaned_titles_with_themes.csv');
+        const loadTotalDocuments = d3.csv(`${dataPath}cleaned_titles_with_themes.csv`);
         
         // Wait for both to load
         Promise.all([loadWordCombinations, loadTotalDocuments]).then(([wordData, documentsData]) => {
             // Only take the first 20 word combinations
             top_three_words = wordData.slice(0, 20);
             totalCount = documentsData.length; // The total count is the number of rows
+        }).catch(error => {
+            console.error('Error loading data:', error);
         });
     });
 
