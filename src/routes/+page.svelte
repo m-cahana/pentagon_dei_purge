@@ -30,7 +30,7 @@
     </p>
 
     <p>
-        I thought I'd take a closer look into all the websites that were purged, to systematically identify the kind of content the Pentagon is targeting for removal. Most website urls are now defunct, so I investigated website titles, which were preserved in an <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1'>AP database</a>. I started by checking the most common phrases in titles:
+        I thought I'd take a closer look into all the websites that were purged, to categorize the kind of content the Pentagon is targeting for removal, and systematically determine what kinds of stories the Trump administration considers unfitting for the military. Most website urls are now defunct, so I investigated website titles, which were preserved in an <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1'>AP database</a>. I started by checking the most common phrases in titles:
     </p>
 
     <br>
@@ -38,11 +38,11 @@
     <TopWordList />
 
     <p>
-        Looking through these top phrases and some additional, less common ones, I determined that websites could be grouped into a few different themes: 
+        Looking through these top phrases and some additional, less common ones, it seems that websites can be grouped into a few different themes: 
     </p>
 
     <ol>
-        <li>Websites related to <span class = 'highlight'>Women</span></li>
+        <li>Websites related to <span class = 'highlight'>women</span></li>
         <li>Websites related to <span class = 'highlight'>Black</span> people</li>
         <li>Websites related to <span class = 'highlight'>Hispanic</span> people</li>
         <li>Websites related to <span class = 'highlight'>Asian Americans or Pacific Islanders</span></li>
@@ -118,30 +118,16 @@
       ]
     }}
     highlightText={{
-      0: "Mentions of cultural celebrations like Black History Month, Juneteenth, and MLK Day are gone.",
-      1: "So are mentions of soliders that call out their Blackness",
-      2: "Artifacts of Black culture, like soul food and gospel music, are also removed.",
-      3: "And the purge has even extended to basic facts of Black history, like slavery and civil rights activism.",
-      4: "Again, military heroes have been erased simply for being Black."
+      0: ["Erasure of Cultural Celebrations", "Mentions of cultural celebrations like Black History Month, Juneteenth, and MLK Day are gone."],
+      1: ["Black Soldiers Removed", "So are mentions of soldiers that call out their Blackness"],
+      2: ["Cultural References Purged", "Artifacts of Black culture, like soul food and gospel music, are also removed."],
+      3: ["Historical Facts Deleted", "And the purge has even extended to basic facts of Black history, like slavery and civil rights activism."],
+      4: ["Military Heroes Erased", "Again, military heroes have been erased simply for being Black."]
     }}
   />
 
   <p>
-    This consistent pattern led me to classify websites into a few different types as well:
-  </p>
-  
-  <ol>
-    <li><span class = 'highlight'>Explicit heritage or DEI events</span>: websites that mention a specific heritage month or event, like Black History Month or Women's History Month.</li>
-    <li><span class = 'highlight'>Everyday celebrations of heritage, ethnicity, or religion</span>: websites that mention activities or celebrations related to a specific heritage group, like gospel music, fiestas, or powwows.</li>
-    <li><span class = 'highlight'>Mentions of military personnel that explicitly highlight their ethnicity</span>: websites that mention military personnel and call out the fact that these personnel are Black, Hispanic, Native American, etc.</li>
-    <li><span class = 'highlight'>Military personnel that belong to a minority group, even though that isn't explicitly mentioned</span>: websites that mention military personnel, without mentioning their ethnicity or religion.</li>
-    <li><span class = 'highlight'>Facts of history that relate to a specific minority group</span>: websites that mention facts of history that relate to a specific ethnic group, like slavery, the civil rights movement, or the Holocaust.</li>
-    <li>Websites belonging to some <span class = 'highlight'>other</span> category</li>
-    
-    </ol>
-
-    <p>
-        Again, I used GPT-4o-mini to classify each website into one of these types. Here are the results:
+    These few types of content come up again and again when you investigate websites of specific themes. I classified each website into one of these types to understand how frequently each one comes up. Here are websites by content type:
     </p>
 
 </main>
@@ -181,19 +167,19 @@
     ol {
         text-align: left;
         margin-left: 2rem;
-        font-family: "Arial";
+        font-family: "Helvetica";
         font-weight: 300;
+    }
+    
+    ol li {
+        margin-bottom: 0.75rem;
     }
 
     .highlight {
-        font-weight: 600;
-    }
-
-    /* Link styling */
-    a, a:visited, a:hover, a:active {
-        color: var(--color-military-green);
-        text-decoration: underline;
-        text-underline-offset: 2px;
+        padding: 1px 2px;
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+        background-color: var(--color-military-green);
     }
 
 </style>

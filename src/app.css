@@ -1,6 +1,7 @@
 :root {
   /* Color palette */
-  --color-military-green: #4d784e;
+  --color-military-green: #68ba7f;
+  --color-darker-military: #008000;
 
   /* You can add more global variables here */
   --color-text: #333;
@@ -20,7 +21,7 @@ body {
 /* Global link styling */
 a,
 a:visited {
-  color: var(--color-military-green);
+  color: var(--color-darker-military);
   text-decoration: underline;
   text-underline-offset: 2px;
 }

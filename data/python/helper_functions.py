@@ -52,6 +52,7 @@ def get_top_three_words(df):
     three_word_phrases = []
 
     for title in df['title']:
+        title = title.replace(':', '')
         words = title.split()
         phrases = [' '.join(pair) for pair in zip(words, words[1:], words[2:])]
         three_word_phrases.extend(phrases)

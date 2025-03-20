@@ -15,9 +15,9 @@
 				"National Hispanic Heritage Month"],
 		}, 
 		highlightText = {
-			0: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-			1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-			2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			0: ["Section 1 Title", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."],
+			1: ["Section 2 Title", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."],
+			2: ["Section 3 Title", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."],
 		}, 
 		titlesList = [
 			"Women's History Month",
@@ -75,7 +75,10 @@
 		{#each sectionIndices as section}
 			{@const active = value === section}
 			<div class="step" class:active>
-				<p>{highlightText[section]}</p>
+				<div class="step-content">
+					<h3>{highlightText[section][0]}</h3>
+					<p>{highlightText[section][1]}</p>
+				</div>
 			</div>
 		{/each}
 	</Scrolly>
@@ -99,7 +102,7 @@
 	
 	/* Highlighted title style */
 	.highlighted {
-		background-color: #FFEB3B; /* Yellow highlight */
+		background-color: var(--color-military-green);
 		font-weight: 400 !important;
 		padding: 1px 2px;
 		box-decoration-break: clone;
@@ -130,7 +133,7 @@
 		position: relative; /* Add positioning context for z-index to work */
 	}
 
-	.step p {
+	.step-content {
 		background-color: rgba(255, 255, 255, 0.9);
         border-radius: 8px;
         padding: 20px;
@@ -138,6 +141,17 @@
         pointer-events: auto;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         margin-right: 5%;
+	}
+	
+	.step-content h3 {
+		margin-top: 0;
+		margin-bottom: 0.5em;
+		font-weight: 550;
+		font-size: 18px;
+	}
+	
+	.step-content p {
+		margin: 0;
 	}
 	
 	/* Make sure the Scrolly component has proper z-index */
