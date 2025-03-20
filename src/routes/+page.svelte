@@ -5,6 +5,7 @@
     
     import ThemeCirclePack from "$lib/components/theme_circle_pack.svelte";
     import { onMount } from 'svelte';
+
     
     onMount(() => {
         // Ensure page starts at the top when refreshed

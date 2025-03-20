@@ -21,7 +21,7 @@
         highlightMap = {
             0: ["Women", "Black"], // Example: highlight "Women" and "Black" themes
             1: ["Hispanic", "Asian or Pacific Islander"], // Example: highlight Hispanic and API themes
-            2: ["Native American", "LGBTQ"], // Example: highlight Native American and LGBTQ+ themes
+            2: ["Native American", "LGBTQ+"], // Example: highlight Native American and LGBTQ+ themes
             3: ["Generic DEI"], 
             4: ["Other"]
         }
@@ -154,6 +154,12 @@
         return data;
     }
 
+    // Function to normalize theme names for CSS class names
+    function normalizeForCSS(name: string): string {
+        // Replace spaces with hyphens, remove + character, and convert to lowercase
+        return name.replace(/\s+/g, '-').replace(/\+/g, '').toLowerCase();
+    }
+
     // Function to highlight themes based on current scroll position
     function highlightThemes(currentValue: number) {
         // Get themes to highlight for this scroll position
@@ -171,13 +177,14 @@
                 themeNodes.forEach(node => {
                     const nodeName = node.data.name;
                     // Check if the theme name contains the string to highlight (case insensitive)
-                    if (nodeName.toLowerCase().includes(themeName.toLowerCase())) {
-                        d3.select(`.circle-${nodeName.replace(/\s+/g, '-').toLowerCase()}`)
+                    if (nodeName === themeName) {
+                        // Use normalized CSS class name (without + character)
+                        d3.select(`.circle-${normalizeForCSS(nodeName)}`)
                             .classed("highlighted", true)
                             .classed("dimmed", false);
                             
                         // Also highlight the associated label
-                        d3.select(`.label-${nodeName.replace(/\s+/g, '-').toLowerCase()}`)
+                        d3.select(`.label-${normalizeForCSS(nodeName)}`)
                             .classed("highlighted", true);
                     }
                 });
@@ -305,7 +312,7 @@
             .attr("class", (d: any) => {
                 // Only add styling classes to theme circles (depth === 1)
                 if (d.depth === 1) {
-                    const themeClass = `circle-${d.data.name.replace(/\s+/g, '-').toLowerCase()}`;
+                    const themeClass = `circle-${normalizeForCSS(d.data.name)}`;
                     return `theme-circle ${themeClass} dimmed`; // Start dimmed by default
                 }
                 return "";
@@ -319,7 +326,7 @@
         // Re-create the labels in this top-level group
         themeNodes.forEach(d => {
             if (d.depth === 1) {
-                const themeClass = `label-${d.data.name.replace(/\s+/g, '-').toLowerCase()}`;
+                const themeClass = `label-${normalizeForCSS(d.data.name)}`;
                 
                 const labelGroup = labelsGroup.append("g")
                     .attr("transform", `translate(${d.x},${d.y})`)
@@ -366,6 +373,37 @@
             highlightThemes(value);
         }
     });
+
+    // Function to log all circle names for debugging
+    function logCircleNames() {
+        console.log("=== All Circle Names ===");
+        
+        // Get all actual circle elements
+        const circleElements = d3.selectAll(".theme-circle").nodes();
+        
+        // Log each circle with its full class list
+        circleElements.forEach((circleEl, i) => {
+            // Get full class attribute value
+            const fullClassValue = circleEl.getAttribute("class");
+            
+            // Get the corresponding node data for additional context
+            const nodeData = themeNodes.find(node => 
+                node.depth === 1 && 
+                fullClassValue.includes(`circle-${normalizeForCSS(node.data.name)}`)
+            );
+            
+            const themeName = nodeData ? nodeData.data.name : "Unknown";
+            
+            console.log(`Circle ${i+1}:`);
+            console.log(`  Theme name: "${themeName}"`);
+            console.log(`  Normalized CSS class: "circle-${normalizeForCSS(themeName)}"`);
+            console.log(`  Full class value: "${fullClassValue}"`);
+            console.log("-----------------");
+        });
+        
+        console.log(`Total circles: ${circleElements.length}`);
+        console.log("======================");
+    }
 </script>
 
 <section id="theme-circle-pack">
