@@ -2,8 +2,9 @@
 	import TitleScrolly from "$lib/components/title_scrolly.svelte";
     import Footer from "$lib/components/footer.svelte";
     import TopWordList from "$lib/components/top_word_list.svelte";
-    
+    import TitleSearch from "$lib/components/title_search.svelte";
     import ThemeCirclePack from "$lib/components/theme_circle_pack.svelte";
+
     import { onMount } from 'svelte';
 
     
@@ -119,17 +120,24 @@
       ]
     }}
     highlightText={{
-      0: ["Erasure of Cultural Celebrations", "Mentions of cultural celebrations like Black History Month, Juneteenth, and MLK Day are gone."],
+      0: ["Explicit Heritage Events", "Mentions of cultural celebrations like Black History Month, Juneteenth, and MLK Day are gone."],
       1: ["Black Soldiers Removed", "So are mentions of soldiers that call out their Blackness"],
       2: ["Cultural References Purged", "Artifacts of Black culture, like soul food and gospel music, are also removed."],
       3: ["Historical Facts Deleted", "And the purge has even extended to basic facts of Black history, like slavery and civil rights activism."],
       4: ["Military Heroes Erased", "Again, military heroes have been erased simply for being Black."]
     }}
   />
-
-  <p>
+  
+    <p>
     These few types of content come up again and again when you investigate websites of specific themes. I classified each website into one of these types to understand how frequently each one comes up. Here are websites by content type:
+
     </p>
+
+    <p>
+        Below you can see all the Pentagon's purged website titles, broken down by theme and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes.csv'>csv</a>). There are many more striking examples of purged content to be found here. For example: titles about Vietnamese refugees, former immigrants grateful for a career opportunity, [insert], and even Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
+    </p>
+
+    <TitleSearch />
 
 </main>
 
