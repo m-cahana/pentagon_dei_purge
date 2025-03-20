@@ -30,7 +30,7 @@
     </p>
 
     <p>
-        I thought I'd take a closer look into all the websites that were purged, to systematically identify the types of content the Pentagon is targeting for removal. Most website urls are now defunct, so I investigated website titles, which were preserved in an <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1'>AP database</a>. I started by checking the most common phrases in titles:
+        I thought I'd take a closer look into all the websites that were purged, to systematically identify the kind of content the Pentagon is targeting for removal. Most website urls are now defunct, so I investigated website titles, which were preserved in an <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1'>AP database</a>. I started by checking the most common phrases in titles:
     </p>
 
     <br>
@@ -50,7 +50,7 @@
         <li>Websites related to <span class = 'highlight'>LGBTQ+</span> people</li>
         <li>Websites related to <span class = 'highlight'>other ethnicities & religions</span></li>
         <li>Websites related to <span class = 'highlight'>generic DEI</span> content</li>
-        <li>Websites belonging to some <span class = 'highlight'>other</span> category</li>
+        <li>Websites belonging to some <span class = 'highlight'>other</span> category.</li>
         
     </ol>
 
@@ -64,54 +64,8 @@
     <ThemeCirclePack />
 
     <p>
-        It's instructive to dig into a sample of websites that all fall under the same theme. What you find is that there are a few different types of content within a thematic category. Consider this sample of websites about women, for example:
+        It's instructive to dig into a sample of websites that all fall under the same theme. What you find is that there are a few different types of content within a thematic category. Consider this sample of websites about Black people, for example:
       </p>
-
-    <TitleScrolly 
-      titlesList={
-        ["Women's History Month",
-        "A story to tell: MCSC celebrates Women's History Month",
-        "WASPs receiving Congressional Gold Medal", 
-        "Marines Honor Women's History Month",
-        "First female shuttle commander",
-        "We can do it! - Female Marines gather to show support for each other", 
-        "Discussing Women's History Month",
-        "Kurze's rise to DLA Executive Director: A testament to women",
-        "WASP recalls her World War II experiences",
-        "Staff Sgt. Betty Blake: First female in AF",
-        "Honoring SixTripleEight",
-        "The First Female Marine - Opha May Johnson",
-        "571 MSAS launches inaugural WPS seminar in El Salvador"]}
-      highlightMap={{
-        0: [
-            "Women's History Month",
-            "Kurze's rise to DLA Executive Director: A testament to women","Discussing Women's History Month",
-            "A story to tell: MCSC celebrates Women's History Month", 
-            "We can do it! - Female Marines gather to show support for each other", 
-        ],
-        1: [ "Honoring SixTripleEight"],
-        2: [
-            "First female shuttle commander", 
-            "Staff Sgt. Betty Blake: First female in AF",
-             "The First Female Marine - Opha May Johnson",
-        ],
-        3: [
-            "WASP recalls her World War II experiences",
-            "WASPs receiving Congressional Gold Medal",
-            "571 MSAS launches inaugural WPS seminar in El Salvador",
-        ]
-      }}
-      highlightText={{
-        0: "Any mention of women's history month has been purged, along with celebration of women in the military.",
-        1: "Cultural media that celebrates women - like the movie Six Triple Eight, which highlights the contributions an all-black women's battalion during WWII - has been removed too.",
-        2: "Female figures from history have been erased.",
-        3: "So too have female-oriented military organizations, like the Women Air Force Service Pilots (WASPS), and the Women's Peace Service (WPS)."
-      }}
-    />
-    
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    </p>
 
     <TitleScrolly 
     titlesList={
@@ -180,11 +134,15 @@
     <li><span class = 'highlight'>Explicit heritage or DEI events</span>: websites that mention a specific heritage month or event, like Black History Month or Women's History Month.</li>
     <li><span class = 'highlight'>Everyday celebrations of heritage, ethnicity, or religion</span>: websites that mention activities or celebrations related to a specific heritage group, like gospel music, fiestas, or powwows.</li>
     <li><span class = 'highlight'>Mentions of military personnel that explicitly highlight their ethnicity</span>: websites that mention military personnel and call out the fact that these personnel are Black, Hispanic, Native American, etc.</li>
-    <li><span class = 'highlight'>Military personnel that just happen to belong to a minority group, even though that isn't explicitly mentioned</span>: websites that mention military personnel, without mentioning their ethnicity or relation to a specific DEI program.</li>
-    <li><span class = 'highlight'>Facts of history that relate to a specific ethnic group</span>: websites that mention facts of history that relate to a specific ethnic group, like slavery, the civil rights movement, or the Holocaust.</li>
+    <li><span class = 'highlight'>Military personnel that belong to a minority group, even though that isn't explicitly mentioned</span>: websites that mention military personnel, without mentioning their ethnicity or religion.</li>
+    <li><span class = 'highlight'>Facts of history that relate to a specific minority group</span>: websites that mention facts of history that relate to a specific ethnic group, like slavery, the civil rights movement, or the Holocaust.</li>
     <li>Websites belonging to some <span class = 'highlight'>other</span> category</li>
     
-</ol>
+    </ol>
+
+    <p>
+        Again, I used GPT-4o-mini to classify each website into one of these types. Here are the results:
+    </p>
 
 </main>
 
