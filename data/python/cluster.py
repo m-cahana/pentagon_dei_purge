@@ -26,7 +26,7 @@ df = pd.DataFrame(df['columns'].tolist(), columns=['filename', 'title', 'url'])
 df['url'] = df['url'].str.extract(r'\[(.*?)\]')[0]
 
 # clean up titles by standardizing apostrophes
-df['title'] = df['title'].str.replace("’", "'")
+df['title'] = df['title'].str.replace("'","'")
 
 # Identify titles that are one word long and contain numbers
 df['one_word_with_numbers'] = df['title'].str.match(r'^\S*\d+\S*$') & ~df['title'].str.contains(r'\s')
@@ -115,9 +115,46 @@ def categorize_text_by_type(text):
     return response.choices[0].message.content.strip()
 
 
-if not os.path.exists('../../static/data/type_classified_types.csv'):
-    tqdm.pandas(desc="Categorizing title types")
-    unique_df['type'] = unique_df['title'].progress_apply(categorize_text_by_type)
+# run in chunks to avoid timeouts
+chunk_size = 250  # Process 250 titles at a time
+num_chunks = len(unique_df) // chunk_size + (1 if len(unique_df) % chunk_size != 0 else 0)
 
-    unique_df.to_csv('../../static/data/theme_classified_types.csv', index=False)
+print(f"Processing {len(unique_df)} titles in {num_chunks} chunks of {chunk_size}")
+
+# Initialize an empty dataframe to collect all processed chunks
+all_processed_df = pd.DataFrame()
+
+# Process each chunk
+for i in range(num_chunks):
+    start_idx = i * chunk_size
+    end_idx = min((i + 1) * chunk_size, len(unique_df))
+
+    print(f"Processing chunk {i+1}/{num_chunks} (titles {start_idx}-{end_idx-1})")
+
+    # Get the current chunk
+    chunk_df = unique_df.iloc[start_idx:end_idx].copy()
+
+    # Check if this chunk was already processed
+    chunk_file = f"../../data/processed/title_chunks/type_chunk_{i+1}.csv"
+    if os.path.exists(chunk_file):
+        print(f"Loading already processed chunk {i+1} from {chunk_file}")
+        processed_chunk = pd.read_csv(chunk_file)
+    else:
+        # Process this chunk
+        tqdm.pandas(desc=f"Categorizing titles in chunk {i+1}/{num_chunks}")
+        chunk_df['type'] = chunk_df['title'].progress_apply(categorize_text_by_type)
+        
+        # Save this chunk
+        chunk_df.to_csv(chunk_file, index=False)
+        processed_chunk = chunk_df
+    
+    print(f"Completed and saved chunk {i+1}/{num_chunks}")
+
+    # Append to the full results
+    all_processed_df = pd.concat([all_processed_df, processed_chunk], ignore_index=True)
+        
+# Save the complete dataset
+all_processed_df.to_csv('../../static/data/type_classified_titles.csv', index=False)
+
+print("All chunks processed and combined into final output file")
 
