@@ -12,6 +12,8 @@
     let totalPages = 1;
     let uniqueThemes = [];
     let selectedTheme = 'All Themes';
+    let uniqueTypes = [];
+    let selectedType = 'All Types';
     let isLoading = false;
     let isVisible = false;
     let observer;
@@ -32,9 +34,26 @@
         'Other': '#556b2f', // dark olive green
     };
     
+    // Type color mapping - different shades of green
+    const typeColors = {
+        // Default color for fallback
+        'default': '#264027',
+        'Explicit heritage and DEI events': '#1d8348', // dark green
+        'Everyday celebrations of heritage or ethnicity': '#117a65', // jungle green
+        'Facts of history that relate to a specific ethnic group': '#0e6655', // teal
+        'Mentions of personnel that highlight their ethnicity': '#148f77', // persian green
+        "Military personnel that belong to a specific ethnic group, even if that isn't explicity mentioned": '#1abc9c', // turquoise
+        'Other': '#48c9b0', // medium turquoise
+    };
+    
     // Function to get color for a theme
     function getThemeColor(theme) {
         return themeColors[theme] || themeColors['default'];
+    }
+    
+    // Function to get color for a type
+    function getTypeColor(type) {
+        return typeColors[type] || typeColors['default'];
     }
     
     // Intersection Observer to detect when component is visible
@@ -63,7 +82,7 @@
         isLoading = true;
         
         // Use our utility function to get the proper path
-        const dataFilePath = getDataPath('cleaned_titles_with_themes.csv');
+        const dataFilePath = getDataPath('cleaned_titles_with_themes_and_types.csv');
         
         d3.csv(dataFilePath)
             .then(data => {
@@ -85,6 +104,17 @@
                 uniqueThemes = Array.from(themeSet).sort();
                 console.log(`Found ${uniqueThemes.length} unique themes:`, uniqueThemes);
                 
+                // Extract unique types
+                const typeSet = new Set();
+                data.forEach(row => {
+                    if (row.type && row.type.trim()) {
+                        typeSet.add(row.type);
+                    }
+                });
+                
+                uniqueTypes = Array.from(typeSet).sort();
+                console.log(`Found ${uniqueTypes.length} unique types:`, uniqueTypes);
+                
                 // Initial filtering
                 filterData();
                 isLoading = false;
@@ -95,7 +125,7 @@
             });
     }
     
-    // Filter data based on search and theme
+    // Filter data based on search, theme, and type
     function filterData() {
         let results = [...allData];
         
@@ -104,12 +134,18 @@
             results = results.filter(item => item.theme === selectedTheme);
         }
         
+        // Apply type filter
+        if (selectedType !== 'All Types') {
+            results = results.filter(item => item.type === selectedType);
+        }
+        
         // Apply search filter
         const query = searchQuery.toLowerCase().trim();
         if (query) {
             results = results.filter(item => 
                 (item.title?.toLowerCase() || '').includes(query) || 
                 (item.theme?.toLowerCase() || '').includes(query) ||
+                (item.type?.toLowerCase() || '').includes(query) ||
                 (item.url?.toLowerCase() || '').includes(query)
             );
         }
@@ -148,6 +184,10 @@
         filterData();
     }
     
+    function handleTypeChange() {
+        filterData();
+    }
+    
     // Function to format URL for display
     function formatUrl(url) {
         // Return short version if too long
@@ -162,7 +202,7 @@
 </script>
 
 <div class="title-search-container" bind:this={containerRef}>
-    <h2>Purged Website Titles & Themes</h2>
+    <h2>Purged Website Themes & Content Types</h2>
     
     {#if isLoading}
         <div class="loading">Loading data...</div>
@@ -192,6 +232,20 @@
                     {/each}
                 </select>
             </div>
+            
+            <div class="type-filter">
+                <label for="type-select">Type:</label>
+                <select 
+                    id="type-select" 
+                    bind:value={selectedType}
+                    on:change={handleTypeChange}
+                >
+                    <option>All Types</option>
+                    {#each uniqueTypes as type}
+                        <option>{type}</option>
+                    {/each}
+                </select>
+            </div>
         </div>
         
         <div class="results-container">
@@ -208,13 +262,14 @@
                     <tr>
                         <th class="title-column">Title</th>
                         <th class="theme-column">Theme</th>
+                        <th class="type-column">Type</th>
                         <th class="url-column">URL</th>
                     </tr>
                 </thead>
                 <tbody>
                     {#if getCurrentPageItems().length === 0}
                         <tr>
-                            <td colspan="3" class="no-results">No results found</td>
+                            <td colspan="4" class="no-results">No results found</td>
                         </tr>
                     {:else}
                         {#each getCurrentPageItems() as item}
@@ -223,6 +278,11 @@
                                 <td class="theme-column">
                                     <span class="theme-tag" style="background-color: {getThemeColor(item.theme)}">
                                         {item.theme || 'Unknown'}
+                                    </span>
+                                </td>
+                                <td class="type-column">
+                                    <span class="type-tag" style="background-color: {getTypeColor(item.type)}">
+                                        {item.type || 'Unknown'}
                                     </span>
                                 </td>
                                 <td class="url-column">
@@ -360,19 +420,22 @@
         font-family: Helvetica, Arial, sans-serif;
     }
     
-    .theme-filter {
+    .theme-filter,
+    .type-filter {
         display: flex;
         align-items: center;
         gap: 0.5rem;
         min-width: 180px;
     }
     
-    .theme-filter label {
+    .theme-filter label,
+    .type-filter label {
         font-size: 18px;
         font-family: Helvetica, Arial, sans-serif;
     }
     
-    .theme-filter select {
+    .theme-filter select,
+    .type-filter select {
         padding: 0.5rem;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -411,7 +474,7 @@
     
     /* Adjusted column widths */
     .title-column {
-        width: 50%; /* Give title more space */
+        width: 40%; /* Reduced to make space for type column */
         padding-right: 0.75rem; /* Standardized padding */
     }
     
@@ -425,8 +488,17 @@
         padding-right: 0.75rem; /* Standardized padding */
     }
     
+    .type-column {
+        width: 15%; /* Same width as theme column */
+        min-width: 100px;
+        white-space: normal;
+        word-wrap: break-word;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    
     .url-column {
-        width: 35%; /* URL takes the rest */
+        width: 30%; /* Reduced to make space for type column */
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -444,7 +516,8 @@
         text-decoration: underline;
     }
     
-    .theme-tag {
+    .theme-tag,
+    .type-tag {
         display: inline-block;
         padding: 0.2rem 0.4rem;
         /* Use inline style for bg color instead */
@@ -494,25 +567,27 @@
             flex-direction: column;
         }
         
-        .theme-filter {
+        .theme-filter,
+        .type-filter {
             width: 100%;
         }
         
         /* Adjusted column widths for small screens - keep all columns visible */
         .title-column {
-            width: 45%; /* Reduced from 70% */
+            width: 35%; /* Reduced to make space for type */
             padding-right: 0.5rem; /* Smaller but consistent padding */
         }
         
-        .theme-column {
-            width: 25%; /* Reduced from 30% */
+        .theme-column,
+        .type-column {
+            width: 20%; /* Equal width for theme and type */
             min-width: 80px;
             padding-left: 0.5rem; /* Smaller but consistent padding */
             padding-right: 0.5rem; /* Smaller but consistent padding */
         }
         
         .url-column {
-            width: 30%; /* New width instead of hiding */
+            width: 25%; /* Reduced to make space for type */
             font-size: 0.85rem; /* Slightly smaller text */
             padding-left: 0.5rem; /* Smaller but consistent padding */
         }
@@ -530,7 +605,8 @@
         }
         
         /* More compact theme tags */
-        .theme-tag {
+        .theme-tag,
+        .type-tag {
             padding: 0.15rem 0.3rem;
             font-size: 0.9rem; /* Match other text */
         }
@@ -555,7 +631,9 @@
         
         /* Smaller theme filter text on mobile */
         .theme-filter label,
-        .theme-filter select {
+        .theme-filter select,
+        .type-filter label,
+        .type-filter select {
             font-size: 14px;
         }
     }
@@ -563,19 +641,20 @@
     /* Extra small screens */
     @media (max-width: 480px) {
         .title-column {
-            width: 40%;
+            width: 35%;
             padding-right: 0.35rem; /* Even smaller but consistent padding */
         }
         
-        .theme-column {
-            width: 25%;
+        .theme-column,
+        .type-column {
+            width: 20%;
             min-width: 60px;
             padding-left: 0.35rem; /* Even smaller but consistent padding */
             padding-right: 0.35rem; /* Even smaller but consistent padding */
         }
         
         .url-column {
-            width: 35%;
+            width: 25%;
             font-size: 0.8rem;
             padding-left: 0.35rem; /* Even smaller but consistent padding */
         }
@@ -586,7 +665,8 @@
             font-size: 0.85rem; /* Smaller but consistent across all columns */
         }
         
-        .theme-tag {
+        .theme-tag,
+        .type-tag {
             font-size: 0.85rem; /* Match table text */
         }
         
