@@ -63,7 +63,9 @@
     </p>    
 
 
-    <ThemeCirclePack />
+    <ThemeCirclePack
+        maxScaleValue = 10_000
+     />
 
     <p>
         It's instructive to dig into a sample of websites that all relate to the same group. What you find is that there are a few different types of content within each group. Consider this sample of websites about Black people, for example:
@@ -124,15 +126,29 @@
     }}
     highlightText={{
       0: ["Explicit heritage events", "Mentions of holidays like Black History Month, Juneteenth, and MLK Day are gone."],
-      1: ["Everyday celebrations of heritage and ethnicity", "So are artifacts of Black culture, like soul food and gospel music."],
-      2: ["Mentions of personnel that highlight their ethnicity", "When soldiers are referred to in a way that calls out their Blackness, their web footprint is removed."],
-      3: ["Personel whose ethnicity isn't explicitly mentioned", "And even when their Blackness isn't mentioned, military heroes have been erased simply for being Black."],
+      1: ["Everyday celebrations of heritage and identity", "So are artifacts of Black culture, like soul food and gospel music."],
+      2: ["Mentions of personnel that highlight their identity", "When soldiers are referred to in a way that calls out their Blackness, their web footprint is removed."],
+      3: ["Personel whose identity isn't explicitly mentioned", "And even when their Blackness isn't mentioned, military heroes have been erased simply for being Black."],
       4: ["Facts of history that relate to Black people", "The administration's DEI purge has extended to basic facts of Black history as well, like slavery and civil rights activism."],
     }}
   />
   
     <p>
-    These few types of content come up again and again when you investigate websites of specific group, so I classified each website into one of these content types to understand which content types are most heavily targeted for removal. Here are websites by content type:
+    These few types of content come up again and again when you investigate websites of specific group:
+    
+    </p>
+
+    <ol>
+        <li><span class = 'highlight'>Explicit heritage and DEI events</span></li>
+        <li><span class = 'highlight'>Everyday celebrations</span> of heritage and identity</li>
+        <li>Mentions of <span class = 'highlight'>military personnel that highlight their identity</span> </li>
+        <li>Mentions of <span class = 'highlight'>military personnel that belong to a specific identity group</span>, even though that's <span class = 'highlight'>not explicitly mentioned</span> </li>
+        <li><span class = 'highlight'>Facts of history</span> that relate to a specific identity group</li>
+        
+    </ol>
+
+    <p>
+    So, I figured I'd classify websites based on whether their content belongs to one of these types. Again, I used a large language model to do this. Here are websites broken downby content type:
 
     </p>
 
@@ -145,10 +161,81 @@
             2: ["Everyday celebrations", "Military personnel - identity mentioned"], 
             3: ["Military personnel - no stated identity", "Facts of history"]
         }}
+        scrollContent = {{
+            0: "Heritage and DEI events are by far the most common content type targeted for removal.",
+            1: "And there's a large share of websites that don't belong to any predefined type.",
+            2: "But there are also a meaningful number of sites taken down, seemingly, just because they describe people as belonging to minority groups.",
+            3: 'And a fair amount of sites taken down simply for mentioning people that happen to be members of minority groups, or mentioning facts that relate to the history of minority groups.',
+        }}
     />
 
     <p>
-        Below you can see all of the Pentagon's purged websites, broken down by group and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes.csv'>csv</a>). There are many more striking examples of purged content to be found here. For example: titles about Vietnamese refugees, and former immigrants grateful for a career opportunity, and even Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
+    These last two categories - facts of history, and military personnel with no identity stated - are the most striking. They suggest for the Trump administration, purging DEI content isn't just about erasing programming that celebrates diversity. It's about cutting down on the footprint of certain types of people. Consider purged websites about military personnel whose identity isn't explicitly stated:
+
+    </p>
+
+    <TitleScrolly 
+    titlesList={
+      [
+        'Vance Marchbanks Jr.',
+        'Clarence D. "Lucky" Lester',
+        'Roy LaGrone',
+        'Maj. Gen. Alfred K. Flowers', 
+        'Hazel Ying Lee',
+        'Army Pfc. Joe Nishimoto',
+        'The 442nd',
+        'Marine Corps Heroes: Lt. Kurt Chew-Een Lee',
+        'Marine Corps Heroes: Pfc. Harold Gonsalves',
+        'SECDEF Chief of Staff Chief of Staff Eric Fanning at DIA',
+        'Jason Strong',
+        'Brig. Gen. Stayce Harris',
+        'Maj. Gen. Marcelite Harris'
+      ]}
+    highlightMap={{
+      0: [
+        'Vance Marchbanks Jr.',
+        'Clarence D. "Lucky" Lester',
+        'Roy LaGrone',
+        'Maj. Gen. Alfred K. Flowers', 
+      ],
+      1: [
+        'Hazel Ying Lee',
+        'Army Pfc. Joe Nishimoto',
+      ],
+      2: [
+        'The 442nd',
+        'Marine Corps Heroes: Lt. Kurt Chew-Een Lee',
+      ],
+      3: [
+        'Marine Corps Heroes: Pfc. Harold Gonsalves',
+      ],
+      4: [
+         'SECDEF Chief of Staff Chief of Staff Eric Fanning at DIA',
+      ],
+      5: [
+        'Maj. Gen. Marcelite Harris'
+      ],
+    }}
+    highlightText={{
+      0: ["", "Vance Marchbanks Jr., Clarence D. Lester, Roy Lagrone, and Alfred K. Flowers were all Tuskegee Airmen - the first Black aviators force in the U.S. military."],
+      1: ["", "Joe Nishimoto - born to Japaense immigrant parents - won the Medal of Honor; Kurt Chew-Een Lee was the first Asian American to be a commissioned as a regular officer in the Marine Corps."],
+      2: ["", "Hazel Ying Lee was one of only two Chinese American Women Airforce Service Pilots during WWII; the 442nd regiment consisted almost entirely of Japanese Americans."],
+      3: ["", "Harold Gonsalves was a Portugese-American, and among the earliest Hispanic Marines to receive the Medal of Honor."],
+      4: ["", "Eric Fanning was the first openly gay leader of a U.S. military service. This website describes him attending a meeting at the Defense Intelligence Agency."],
+      5: ["", "Marcelite Harris became the first Black female General Officer in the U.S. Air Force."],
+    }}
+  />
+
+  <p>
+    As people have started to notice military heroes gone missing online, outrage has grown, and in some cases the Pentagon has retracted its steps. Some websites about Jackie Robinson, the Navajo code talkers, and the Tuskegee Airmen, for example, have been <a href = 'https://www.npr.org/2025/03/20/nx-s1-5334461/pentagon-black-veterans-navajo-code-talkers-website-diversity'>restored</a>. But the purge is quite widespread in its reach, erasing the memories of hundreds of soldiers, many of whom have received less attention so far. And the purge itself tells of what this administration does when uninhibited - which military stories it seeks to erase before public backlash forces some reversals. 
+  </p>
+
+  <p>
+    You can see too that, even when the Administration buckles and restores some websites, it keeps others erased. Some websites about Jackie Robinson were restored, for example, but you can see in the database below that other websites describing Jackie Robinson movies remain dead (as of March 21st at least).
+  </p>
+
+  <p>
+    The database below displays all of the Pentagon's purged websites, broken down by group and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes.csv'>csv</a>). There are many more striking examples of purged content to be found here - too many to list comprehensively. But by way of example, it's worth noting that a number of websites related to Holocaust survivors (content type: facts of history)have been removed. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
     </p>
 
     <TitleSearch />

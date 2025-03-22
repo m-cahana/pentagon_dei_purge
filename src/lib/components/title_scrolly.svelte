@@ -80,7 +80,9 @@
 			{@const active = value === section}
 			<div class="step" class:active>
 				<div class="step-content">
-					<h3>{highlightText[section][0]}</h3>
+					{#if highlightText[section][0] && highlightText[section][0].trim() !== ''}
+						<h3>{highlightText[section][0]}</h3>
+					{/if}
 					<p>{highlightText[section][1]}</p>
 				</div>
 			</div>
