@@ -31,6 +31,16 @@ df_types['type'] = (df_types['type']
                .str.replace('Inclusive heritage and DEI events', 'Explicit heritage and DEI events')
                .str.replace(r'(^|(?<=\s))Military personnel that belong to a specific ethnic group($|(?=\s))', "Military personnel that belong to a specific ethnic group, even if that isn't explicitly mentioned", regex=True))
 
+# map to simpler types
+df_types['type'] = df_types['type'].replace(
+    {
+        "Everyday celebrations of heritage or ethnicity": "Everyday celebrations",
+        "Mentions of personnel that highlight their ethnicity": "Military personnel - identity mentioned",
+        "Military personnel that belong to a specific ethnic group, even if that isn't explicitly mentioned": "Military personnel - no stated identity",
+        "Facts of history that relate to a specific ethnic group": "Facts of history",
+    }
+)
+
 # **************
 # analysis
 # **************

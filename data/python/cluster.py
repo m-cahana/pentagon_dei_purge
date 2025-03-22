@@ -8,30 +8,16 @@ from tqdm import tqdm
 client = OpenAI(api_key=api_key)
 
 # **************
+# config
+# **************
+
+slight_redo = True
+
+# **************
 # data read-in
 # **************
 
-# read the JSON file
-df = pd.read_json('../raw/photos.json')
-
-# **************
-# data cleaning
-# **************
-
-# convert the 'columns' arrays into separate columns
-df = pd.DataFrame(df['rows'].tolist())
-df = pd.DataFrame(df['columns'].tolist(), columns=['filename', 'title', 'url'])
-
-# clean up the URLs by removing the markdown formatting
-df['url'] = df['url'].str.extract(r'\[(.*?)\]')[0]
-
-# clean up titles by standardizing apostrophes
-df['title'] = df['title'].str.replace("'","'")
-
-# Identify titles that are one word long and contain numbers
-df['one_word_with_numbers'] = df['title'].str.match(r'^\S*\d+\S*$') & ~df['title'].str.contains(r'\s')
-
-clean_df = df[~(df['one_word_with_numbers'])]  
+clean_df = pd.read_csv('../../static/data/cleaned_titles.csv')
 
 unique_df = clean_df.drop_duplicates(subset=['title'])
 
@@ -124,6 +110,8 @@ print(f"Processing {len(unique_df)} titles in {num_chunks} chunks of {chunk_size
 # Initialize an empty dataframe to collect all processed chunks
 all_processed_df = pd.DataFrame()
 
+total_na = 0
+
 # Process each chunk
 for i in range(num_chunks):
     start_idx = i * chunk_size
@@ -139,6 +127,9 @@ for i in range(num_chunks):
     if os.path.exists(chunk_file):
         print(f"Loading already processed chunk {i+1} from {chunk_file}")
         processed_chunk = pd.read_csv(chunk_file)
+
+        print(f'nas in chunk: {processed_chunk.type.isna().sum()}')
+        total_na += processed_chunk.type.isna().sum()
     else:
         # Process this chunk
         tqdm.pandas(desc=f"Categorizing titles in chunk {i+1}/{num_chunks}")
@@ -157,4 +148,29 @@ for i in range(num_chunks):
 all_processed_df.to_csv('../../static/data/type_classified_titles.csv', index=False)
 
 print("All chunks processed and combined into final output file")
+
+if slight_redo:
+    missing_chunk_filename = '../../data/processed/title_chunks/missing_titles_chunk.csv'
+    if os.path.exists(missing_chunk_filename):
+        print('no missing titles to categorize')
+        missing_titles = pd.read_csv(missing_chunk_filename)
+
+    else:
+         
+        print('classifying missing titles...')
+        prev_df = pd.read_csv('../../static/data/type_classified_titles.csv')
+
+        missing_titles = unique_df[~unique_df['title'].isin(prev_df['title'])]
+        
+        print(f'missing titles: {len(missing_titles)}')
+
+        tqdm.pandas(desc="Categorizing missing titles")
+        missing_titles['type'] = missing_titles['title'].progress_apply(categorize_text_by_type)
+
+        missing_titles.to_csv(missing_chunk_filename, index=False)
+
+
+    all_processed_df = pd.concat([all_processed_df, missing_titles], ignore_index=True)
+
+    all_processed_df.to_csv('../../static/data/type_classified_titles.csv', index=False)
 

@@ -136,6 +136,17 @@
 
     </p>
 
+    <ThemeCirclePack 
+        classSuffix = 'type'
+        groupByColumn = 'type' 
+        highlightMap = {{
+            0: ["Explicit heritage and DEI events"], 
+            1: ["Other"], 
+            2: ["Everyday celebrations", "Military personnel - identity mentioned"], 
+            3: ["Military personnel - no stated identity", "Facts of history"]
+        }}
+    />
+
     <p>
         Below you can see all of the Pentagon's purged website titles, broken down by theme and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes.csv'>csv</a>). There are many more striking examples of purged content to be found here. For example: titles about Vietnamese refugees, and former immigrants grateful for a career opportunity, and even Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
     </p>
