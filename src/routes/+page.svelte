@@ -40,7 +40,7 @@
     <TopWordList />
 
     <p>
-        Looking through these top phrases and some additional, less common ones, I figured that websites can be grouped into a handful of different themes: 
+        Looking through these top phrases and some additional, less common ones, I figured that websites can be grouped into a handful of different identity groups: 
     </p>
 
     <ol>
@@ -58,7 +58,7 @@
 
     <p>
 
-    To classify each website into one of these themes, I used a large language model, which has enough contextual knowledge to recognize that titles like "Jackie Robinson" or "Tuskegee Airmen" are related to Black people, even though they don't explicitly have "black" in their text. After manually reviewing a sample of 100 classifications, I found that the LLM was consistently choosing the themes that I would have chosen myself. Here are all websites, classified by theme according to their title: 
+    To classify each website into one of these groups, I used a large language model, which has enough contextual knowledge to recognize that titles like "Jackie Robinson" or "Tuskegee Airmen" are related to Black people, even though they don't explicitly have "black" in their text. After manually reviewing a sample of 100 classifications, I found that the LLM was consistently choosing groups that I would have chosen myself. Here are all websites, classified by identity group according to their title: 
 
     </p>    
 
@@ -66,7 +66,7 @@
     <ThemeCirclePack />
 
     <p>
-        It's instructive to dig into a sample of websites that all fall under the same theme. What you find is that there are a few different types of content within a thematic category. Consider this sample of websites about Black people, for example:
+        It's instructive to dig into a sample of websites that all relate to the same group. What you find is that there are a few different types of content within each group. Consider this sample of websites about Black people, for example:
       </p>
 
     <TitleScrolly 
@@ -132,7 +132,7 @@
   />
   
     <p>
-    These few types of content come up again and again when you investigate websites of specific themes. I classified each website into one of these content types to understand which content types are most heavily targeted for removal. Here are websites by content type:
+    These few types of content come up again and again when you investigate websites of specific group, so I classified each website into one of these content types to understand which content types are most heavily targeted for removal. Here are websites by content type:
 
     </p>
 
@@ -148,7 +148,7 @@
     />
 
     <p>
-        Below you can see all of the Pentagon's purged website titles, broken down by theme and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes.csv'>csv</a>). There are many more striking examples of purged content to be found here. For example: titles about Vietnamese refugees, and former immigrants grateful for a career opportunity, and even Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
+        Below you can see all of the Pentagon's purged websites, broken down by group and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes.csv'>csv</a>). There are many more striking examples of purged content to be found here. For example: titles about Vietnamese refugees, and former immigrants grateful for a career opportunity, and even Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
     </p>
 
     <TitleSearch />

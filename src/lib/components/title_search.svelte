@@ -11,7 +11,7 @@
     let itemsPerPage = 10;
     let totalPages = 1;
     let uniqueThemes = [];
-    let selectedTheme = 'All Themes';
+    let selectedTheme = 'All Groups';
     let uniqueTypes = [];
     let selectedType = 'All Types';
     let isLoading = false;
@@ -130,7 +130,7 @@
         let results = [...allData];
         
         // Apply theme filter
-        if (selectedTheme !== 'All Themes') {
+        if (selectedTheme !== 'All Groups') {
             results = results.filter(item => item.theme === selectedTheme);
         }
         
@@ -202,7 +202,7 @@
 </script>
 
 <div class="title-search-container" bind:this={containerRef}>
-    <h2>Purged Website Themes & Content Types</h2>
+    <h2>Purged Website Identify Groups & Content Types</h2>
     
     {#if isLoading}
         <div class="loading">Loading data...</div>
@@ -220,13 +220,13 @@
             </div>
             
             <div class="theme-filter">
-                <label for="theme-select">Theme:</label>
+                <label for="theme-select">Group:</label>
                 <select 
                     id="theme-select" 
                     bind:value={selectedTheme}
                     on:change={handleThemeChange}
                 >
-                    <option>All Themes</option>
+                    <option>All Groups</option>
                     {#each uniqueThemes as theme}
                         <option>{theme}</option>
                     {/each}
@@ -261,7 +261,7 @@
                 <thead>
                     <tr>
                         <th class="title-column">Title</th>
-                        <th class="theme-column">Theme</th>
+                        <th class="theme-column">Group</th>
                         <th class="type-column">Type</th>
                         <th class="url-column">URL</th>
                     </tr>
