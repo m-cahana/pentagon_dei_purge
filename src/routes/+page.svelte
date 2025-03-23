@@ -194,7 +194,8 @@
         'SECDEF Chief of Staff Chief of Staff Eric Fanning at DIA',
         'Jason Strong',
         'Brig. Gen. Stayce Harris',
-        'Maj. Gen. Marcelite Harris'
+        'Maj. Gen. Marcelite Harris',
+        'Cmdr. John Herrington'
       ]}
     highlightMap={{
       0: [
@@ -222,6 +223,9 @@
          'SECDEF Chief of Staff Chief of Staff Eric Fanning at DIA',
       ],
       7: [
+        'Cmdr. John Herrington'
+      ],
+      8: [
         'Maj. Gen. Marcelite Harris'
       ],
     }}
@@ -231,9 +235,10 @@
       2: ["", "Kurt Chew-Een Lee fought in World War II, the Korean War, and the Vietnam War, and was the first Asian American to be a commissioned as a regular officer in the Marine Corps."],
       3: ["", "The 442nd regiment was a WWII unit that consisted almost entirely of Japanese Americans."],
       4: ["", "Hazel Ying Lee was one of only two Chinese American Women Airforce Service Pilots during WWII."],
-      5: ["", "Harold Gonsalves was a Portugese-American, and among the earliest Hispanic Marines to receive the Medal of Honor. He received the award for flinging himself onto a grande in order to save the lives of two fellow Marines."],
+      5: ["", "Harold Gonsalves was a Portugese-American, and among the earliest Hispanic Marines to receive the Medal of Honor. He received the award for jumping on a grenade to save the lives of two fellow Marines."],
       6: ["", "Eric Fanning was Secretary of the Army under President Obama, and the first openly gay leader of a U.S. military service. This website describes him attending a meeting at the Defense Intelligence Agency."],
-      7: ["", "Marcelite Harris served in Vietnam, and became the first Black female General Officer in the U.S. Air Force."],
+      7: ["", "John Herrington is a retired Naval aviator and former NASA astronaut, who in 2002 became the first Native American to fly in space."],
+      8: ["", "Marcelite Harris served in Vietnam, and became the first Black female General Officer in the U.S. Air Force."],
     }}
   />
 
