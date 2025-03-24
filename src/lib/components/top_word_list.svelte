@@ -13,7 +13,7 @@
     onMount(() => {
         // Use our utility function to get the proper paths
         const wordCombinationsPath = getDataPath('top_three_words.csv');
-        const documentsPath = getDataPath('cleaned_titles_with_themes.csv');
+        const documentsPath = getDataPath('cleaned_titles_with_themes_and_types.csv');
         
         console.log(`Loading data from: ${wordCombinationsPath}`);
         

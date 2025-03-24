@@ -32,4 +32,4 @@ npm run deploy
 
 ## Data
 
-The data used in this analysis is available in the `static/data` directory and can be accessed directly [here](https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes.csv).
+The data used in this analysis is available in the `static/data` directory and can be accessed directly [here](https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes_and_types.csv).
