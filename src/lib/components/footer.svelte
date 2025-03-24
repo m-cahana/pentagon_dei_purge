@@ -24,7 +24,7 @@
 
 <style>
     footer {
-        padding: 2rem 4rem;
+        padding: 2rem 5%;
         margin-top: 2rem;
     }
 

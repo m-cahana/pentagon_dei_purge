@@ -93,7 +93,7 @@
 
 <style>
 	p {
-		margin: 0.5em 0;
+		margin: 0.2em 0;
 		font-family: "Arial";
 		font-weight: 200 !important;
 		text-align: left;
@@ -117,12 +117,20 @@
 	
 	/* Container for all titles */
 	.titles-container {
-		margin-bottom: 2em;
 		position: sticky;
-		top: 4em;
+		top: 0;
+		height: 100vh; /* Take full viewport height */
+		display: flex;
+		flex-direction: column;
+		justify-content: center; /* Center content vertically */
 		z-index: 1;
-		background-color: white; /* Add background to ensure text is readable */
+		background-color: white;
 		padding: 10px 0;
+		/* Ensure there's room for overflow if many titles */
+		overflow-y: auto;
+		/* Add compact spacing */
+		gap: 0.1em; /* Small gap between title items */
+		max-height: 100vh;
 	}
 
 	.spacer {
