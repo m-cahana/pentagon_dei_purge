@@ -3,7 +3,8 @@
     import Footer from "$lib/components/footer.svelte";
     import TopWordList from "$lib/components/top_word_list.svelte";
     import TitleSearch from "$lib/components/title_search.svelte";
-    import ThemeCirclePack from "$lib/components/theme_circle_pack.svelte";
+    import PieChart from "$lib/components/pie_chart.svelte";
+    import { themeColors, typeColors } from '$lib/utils/color_schemes';
 
     import { onMount } from 'svelte';
 
@@ -67,8 +68,8 @@
     </p>    
 
 
-    <ThemeCirclePack
-        maxScaleValue = 10_000
+    <PieChart
+        colorScheme = {themeColors}
      />
 
     <p>
@@ -157,9 +158,10 @@
 
     </p>
 
-    <ThemeCirclePack 
+    <PieChart 
         classSuffix = 'type'
         groupByColumn = 'type' 
+        colorScheme = {typeColors}
         highlightMap = {{
             0: ["Explicit heritage and DEI events"], 
             1: ["Other"], 
