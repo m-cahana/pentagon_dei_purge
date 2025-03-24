@@ -12,9 +12,9 @@
     let itemsPerPage = 10;
     let totalPages = 1;
     let uniqueThemes = [];
-    let selectedTheme = 'All Groups';
+    let selectedTheme = 'All groups';
     let uniqueTypes = [];
-    let selectedType = 'All Types';
+    let selectedType = 'All types';
     let isLoading = false;
     let isVisible = false;
     let observer;
@@ -94,12 +94,12 @@
         let results = [...allData];
         
         // Apply theme filter
-        if (selectedTheme !== 'All Groups') {
+        if (selectedTheme !== 'All groups') {
             results = results.filter(item => item.theme === selectedTheme);
         }
         
         // Apply type filter
-        if (selectedType !== 'All Types') {
+        if (selectedType !== 'All types') {
             results = results.filter(item => item.type === selectedType);
         }
         
@@ -183,32 +183,34 @@
                 />
             </div>
             
-            <div class="theme-filter">
-                <label for="theme-select">Group:</label>
-                <select 
-                    id="theme-select" 
-                    bind:value={selectedTheme}
-                    on:change={handleThemeChange}
-                >
-                    <option>All Groups</option>
-                    {#each uniqueThemes as theme}
-                        <option>{theme}</option>
-                    {/each}
-                </select>
-            </div>
-            
-            <div class="type-filter">
-                <label for="type-select">Type:</label>
-                <select 
-                    id="type-select" 
-                    bind:value={selectedType}
-                    on:change={handleTypeChange}
-                >
-                    <option>All Types</option>
-                    {#each uniqueTypes as type}
-                        <option>{type}</option>
-                    {/each}
-                </select>
+            <div class="filter-group">
+                <div class="theme-filter">
+                    <label for="theme-select">Group:</label>
+                    <select 
+                        id="theme-select" 
+                        bind:value={selectedTheme}
+                        on:change={handleThemeChange}
+                    >
+                        <option>All groups</option>
+                        {#each uniqueThemes as theme}
+                            <option>{theme}</option>
+                        {/each}
+                    </select>
+                </div>
+                
+                <div class="type-filter">
+                    <label for="type-select">Type:</label>
+                    <select 
+                        id="type-select" 
+                        bind:value={selectedType}
+                        on:change={handleTypeChange}
+                    >
+                        <option>All types</option>
+                        {#each uniqueTypes as type}
+                            <option>{type}</option>
+                        {/each}
+                    </select>
+                </div>
             </div>
         </div>
         
@@ -384,6 +386,12 @@
         font-family: Helvetica, Arial, sans-serif;
     }
     
+    .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
     .theme-filter,
     .type-filter {
         display: flex;
@@ -529,6 +537,12 @@
     @media (max-width: 768px) {
         .search-filters {
             flex-direction: column;
+        }
+        
+        .filter-group {
+            flex-direction: column;
+            gap: 0.75rem;
+            width: 100%;
         }
         
         .theme-filter,

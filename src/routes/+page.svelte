@@ -37,7 +37,7 @@
     </p>
 
     <p>
-        Although these examples have captured attention, outlets haven't run comprehensive analysis to categorize purged websites. I try to do that here. By systematically categorizing websites the Trump administration has purged, I think we can better understand the full breadth of stories the administration considers unfitting for the military. 
+        Although these examples have captured attention, to my knowledge someone's yet to run a comprehensive analysis to categorize purged websites. I try to do that here. By systematically categorizing websites the Trump administration has purged, I think we can better understand the full breadth of stories the administration considers unfitting for the military. 
     </p>
 
     <p>
@@ -137,13 +137,13 @@
       0: ["Explicit heritage events", "Mentions of holidays like Black History Month, Juneteenth, and MLK Day are gone."],
       1: ["Everyday celebrations of heritage and identity", "So are artifacts of Black cultural celebration, like soul food and gospel music."],
       2: ["Mentions of personnel that highlight their identity", "Soldiers referred to in a way that calls out their Blackness are removed."],
-      3: ["Personel whose identity isn't explicitly mentioned", "And even when their Blackness isn't mentioned soldiers have been erased from web records, seemingly for being Black."],
+      3: ["Personel whose identity isn't explicitly mentioned", "And even when their Blackness isn't mentioned soldiers have been erased from web records seemingly just for being Black."],
       4: ["Facts of history that relate to Black people", "The administration's DEI purge has extended to basic facts of Black history as well, like slavery and civil rights activism."],
     }}
   />
   
     <p>
-    These few types of content come up again and again when you investigate websites of a specific group. To state them more generally, they are:
+    These few types of content come up again and again when you investigate websites of a specific identity group. To state the categories more generally, they are:
     
     </p>
 
@@ -176,7 +176,7 @@
             0: "Heritage and DEI events are by far the most common content type targeted for removal.",
             1: "And there's a large share of websites that don't belong to any predefined type.",
             2: "But there are also a meaningful number of sites taken down, seemingly, because they describe people as belonging to minority identity groups.",
-            3: 'And a fair amount of sites taken down, seemingly, because they simply mention soldiers that happen to have certain identities, or mention facts relating to the history of certain identity groups.',
+            3: 'And hundreds of sites taken down, seemingly, because they simply mention soldiers that happen to have certain identities, or mention facts relating to the history of certain identity groups.',
         }}
     />
 
@@ -236,28 +236,28 @@
       ],
     }}
     highlightText={{
-      0: ["", "Vance Marchbanks Jr., Clarence D. Lester, Roy Lagrone, and Alfred K. Flowers were all Tuskegee Airmen - the first Black aviators force in the U.S. military."],
+      0: ["", "Vance Marchbanks Jr., Clarence D. Lester, Roy Lagrone, and Alfred K. Flowers were all Tuskegee Airmen - the first Black aviators in the U.S. military, who fought during WWII."],
       1: ["", "Joe Nishimoto - born to Japanese immigrant parents - died in 1944, and received the Medal of Honor posthumously."],
       2: ["", "Kurt Chew-Een Lee fought in World War II, the Korean War, and the Vietnam War, and was the first Asian American to be a commissioned as a regular officer in the Marine Corps."],
       3: ["", "The 442nd regiment was a WWII unit that consisted almost entirely of Japanese Americans."],
       4: ["", "Hazel Ying Lee was one of only two Chinese American Women Airforce Service Pilots during WWII."],
       5: ["", "Harold Gonsalves was a Portugese-American, and among the earliest Hispanic Marines to receive the Medal of Honor. He received the award for jumping on a grenade to save the lives of two fellow Marines."],
-      6: ["", "Eric Fanning was Secretary of the Army under President Obama, and the first openly gay leader of a U.S. military service. This website describes him attending a meeting at the Defense Intelligence Agency."],
+      6: ["", "Eric Fanning was Secretary of the Army under President Obama, and the first openly gay leader of a U.S. military service. This website described him attending a meeting at the Defense Intelligence Agency."],
       7: ["", "John Herrington is a retired Naval aviator and former NASA astronaut, who in 2002 became the first Native American to fly in space."],
       8: ["", "Marcelite Harris served in Vietnam, and became the first Black female General Officer in the U.S. Air Force."],
     }}
   />
 
   <p>
-    As people have started to notice military heroes gone missing online, outrage has grown, and in some cases the Pentagon has retraced its steps. Websites about Jackie Robinson, the Navajo code talkers, and the Tuskegee Airmen, for example, have been <a href = 'https://www.npr.org/2025/03/20/nx-s1-5334461/pentagon-black-veterans-navajo-code-talkers-website-diversity'>restored</a>. But the purge is quite widespread in its reach, erasing digital traces of hundreds of soldiers, many of whom haven't received attention online. 
+    As people have started to notice military heroes gone missing online, outrage has grown, and in some cases the Pentagon has retraced its steps. Websites about Jackie Robinson, the Navajo code talkers, and the Tuskegee Airmen, for example, have been <a href = 'https://www.npr.org/2025/03/20/nx-s1-5334461/pentagon-black-veterans-navajo-code-talkers-website-diversity'>restored</a>. But the purge is quite widespread in its reach, erasing digital traces of hundreds of soldiers, many of whom haven't received attention yet. 
   </p>
 
   <p>
-    And you can see too that, even when the Administration buckles and restores some websites, it keeps other related content erased. Some websites about Jackie Robinson were restored, for example, but you can see in the database below that other websites describing Jackie Robinson movies remain defunct (as of March 21st, at least).
+    And you can see here that even when the Administration buckles and restores some websites, it keeps other related content erased. Some websites about Jackie Robinson were restored, for example, but the database below shows that other websites describing Jackie Robinson movies remain defunct (as of March 21st at least).
   </p>
 
   <p>
-    The database here displays all of the Pentagon's purged websites, broken down by identity group and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes.csv'>csv</a>). There are many more striking examples of purged content to be found in it - too many to list comprehensively. But here are a few: websites about Vietnamese refugees, immigrants-turned-soldiers, and Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
+    This database displays all of the Pentagon's purged websites, broken down by identity group and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes_and_types.csv'>csv</a>). There are many more striking examples of purged content to be found in it - too many to list comprehensively. But here are a few: websites about Vietnamese refugees, immigrants-turned-soldiers, and Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
 
     </p>
 
