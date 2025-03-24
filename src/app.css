@@ -9,6 +9,18 @@
   --font-primary: "Helvetica", Arial, sans-serif;
 }
 
+/* Reset and normalize */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 /* Global styles */
 body {
   font-family: var(--font-primary);
@@ -16,6 +28,10 @@ body {
   background-color: var(--color-background);
   margin: 0;
   padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
+  font-size: 16px;
 }
 
 /* Global link styling */
