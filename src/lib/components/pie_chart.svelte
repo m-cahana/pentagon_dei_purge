@@ -576,12 +576,15 @@
     
     .visualization-container {
         position: sticky;
-        top: 4em;
+        top: calc(50vh - 40vh); /* Position to center the chart vertically */
         z-index: 1;
         width: 100%;
         height: auto;
         background-color: white;
         padding: 0 10px; /* Add some padding to prevent edge cutting */
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .theme-donut-chart__container {
@@ -692,6 +695,10 @@
     
     /* Media query for small screens */
     @media (max-width: 768px) {
+        .visualization-container {
+            top: calc(50vh - 30vh); /* Adjusted to center the 60vh container */
+        }
+        
         .theme-donut-chart__container {
             height: 60vh;
         }
@@ -714,6 +721,10 @@
     
     /* Media query for very small screens */
     @media (max-width: 480px) {
+        .visualization-container {
+            top: calc(50vh - 25vh); /* Adjusted to center the 50vh container */
+        }
+        
         .theme-donut-chart__container {
             height: 50vh;
         }
