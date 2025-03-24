@@ -1,11 +1,11 @@
 <footer>
     <div class="line"></div>
     <div class="footer-content">
-        <p class = 'attribution'>Created by Michael Cahana. All code for this project can be viewed on <a href = 'https://github.com/m-cahana/pentagon_dei_purge'>GitHub</a>.</p>
+        <p class = 'attribution'>Created by Michael Cahana. All code for this project can be viewed on <a href = 'https://github.com/m-cahana/pentagon_dei_purge' target="_blank" rel="noopener noreferrer" >GitHub</a>.</p>
 
         <h2>Methodology</h2>
         <p class = 'methodology'>
-            Photo data was scraped as a .json file from the AP's <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1'>database</a>. You can see the raw dataset at <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/data/raw/photos.json'>this link</a>.
+            Photo data was scraped as a .json file from the AP's <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1' target="_blank" rel="noopener noreferrer" >database</a>. You can see the raw dataset at <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/data/raw/photos.json' target="_blank" rel="noopener noreferrer" >this link</a>.
         </p>
 
         <p class = 'methodology'>
@@ -13,11 +13,11 @@
         </p>
 
         <p class = 'methodology'>
-            To classify websites into identity groups and content types, I used Open AI's large language model, GPT-4o-mini, accessed via Python through the <a href = 'https://openai.com/api/'>OpenAI API</a>. I developed prompts to classify websites appropriately, which can be found <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/data/python/cluster.py'>here</a>. I then manually reviewed a sample of 100 classifications to ensure the LLM was performing as expected. I also, separately, tried a few more traditional text clustering methods (like generating text embeddings, measuring distances between titles, and grouping titles using k-means clustering), but found the LLM to be far more accurate, especially when it came to classifying titles whose meanings weren't immediately obvious (like "Eric Fanning", the former Secretary of the Army, and first openly gay leader of a U.S. military service).
+            To classify websites into identity groups and content types, I used Open AI's large language model, GPT-4o-mini, accessed via Python through the <a href = 'https://openai.com/api/' target="_blank" rel="noopener noreferrer" >OpenAI API</a>. I developed prompts to classify websites appropriately, which can be found <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/data/python/cluster.py' target="_blank" rel="noopener noreferrer" >here</a>. I then manually reviewed a sample of 100 classifications to ensure the LLM was performing as expected. I also, separately, tried a few more traditional text clustering methods (like generating text embeddings, measuring distances between titles, and grouping titles using k-means clustering), but found the LLM to be far more accurate, especially when it came to classifying titles whose meanings weren't immediately obvious (like "Eric Fanning", the former Secretary of the Army, and first openly gay leader of a U.S. military service).
         </p>
 
         <p class = 'methodology'>
-            To put together scrolling tiles that move against a fixed background, I used a <a href = 'https://github.com/the-pudding/svelte-starter'>Svelte starter template developed by the Pudding</a>. 
+            To put together scrolling tiles that move against a fixed background, I used a <a href = 'https://github.com/the-pudding/svelte-starter' target="_blank" rel="noopener noreferrer" >Svelte starter template developed by the Pudding</a>. 
         </p>
     </div>
 </footer>
