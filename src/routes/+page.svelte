@@ -20,6 +20,10 @@
     });
 </script>
 
+<svelte:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</svelte:head>
+
 <main>
 	<h1>What's the Trump Administration Trying to Erase Through Its DEI Purge?</h1>
     <div class="subtitle">March 2025</div>
