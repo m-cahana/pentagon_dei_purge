@@ -37,7 +37,7 @@
     </p>
 
     <p>
-        Although these examples have captured attention, to my knowledge someone's yet to run a comprehensive analysis to categorize purged websites. I try to do that here. By systematically categorizing websites the Trump administration has purged, I think we can better understand the full breadth of stories the administration considers unfitting for the military. 
+        Although these examples have captured attention, to my knowledge someone's yet to run a comprehensive analysis that categorizes purged websites. I try to do that here. By systematically categorizing websites the Trump administration has purged, I think we can better understand the full breadth of stories the administration considers unfitting for the military. 
     </p>
 
     <p>
@@ -271,8 +271,7 @@
         font-family: "Helvetica";
 		text-align: center;
 	}
-
-
+    
 	h1 {
 		font-size: 36px;
         font-style: italic;
