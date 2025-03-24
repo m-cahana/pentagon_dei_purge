@@ -29,11 +29,11 @@
     <div class="subtitle">March 2025</div>
 
     <p>
-        On the first day of his second term in office, President Trump signed an <a href = 'https://www.whitehouse.gov/presidential-actions/2025/01/ending-radical-and-wasteful-government-dei-programs-and-preferencing/'>executive order</a> calling for an end to government DEI programs, which he categorized as "radical", "wasteful", and the cause of "shameful discrimination". In turn, the Pentagon released a <a href = 'https://www.defense.gov/News/News-Releases/News-Release-View/Article/260000/pentagon-to-end-radical-and-wasteful-dei-programs-and-preferencing-in-the-defense-department/'>memorandum</a> calling for a "digital content refresh" across all Department of Defense public platforms. Any articles, photos, and videos promoting DEI were ordered to be removed by March 5th.
+        On the first day of his second term in office, President Trump signed an <a href = 'https://www.whitehouse.gov/presidential-actions/2025/01/ending-radical-and-wasteful-government-dei-programs-and-preferencing/' target="_blank" rel="noopener noreferrer">executive order</a> calling for an end to government DEI programs, which he categorized as "radical", "wasteful", and the cause of "shameful discrimination". In turn, the Pentagon released a <a href = 'https://www.defense.gov/News/News-Releases/News-Release-View/Article/260000/pentagon-to-end-radical-and-wasteful-dei-programs-and-preferencing-in-the-defense-department/' target="_blank" rel="noopener noreferrer">memorandum</a> calling for a "digital content refresh" across all Department of Defense public platforms. Any articles, photos, and videos promoting DEI were ordered to be removed by March 5th.
     </p>
 
     <p>
-        By March 7th, the Pentagon had flagged 26,000 images for removal across websites from every branch of the military. Outlets quickly noted that websites about the <a href = 'https://apnews.com/article/dei-purge-images-pentagon-diversity-women-black-8efcfaec909954f4a24bad0d49c78074'>Tuskegee Airmen</a>, <a href = 'https://www.washingtonpost.com/investigations/2025/03/17/pentagon-dei-native-american-iwo-jima/'>Navajo code talkers</a> and <a href = 'https://www.axios.com/2025/03/19/jackie-robinson-military-service-webpage-dod-dei'>Jackie Robinson</a> were among the sites purged. Websites about <a href = 'https://www.forbes.com/sites/conormurray/2025/03/07/enola-gay-aircraft-and-other-historic-items-inaccurately-targeted-under-pentagons-anti-dei-purge/'>Enola Gay</a> - the aircraft that dropped an atomic bomb on Hiroshima - were also removed, presumably because they were mistakenly flagged as LGBTQ+ content. 
+        By March 7th, the Pentagon had flagged 26,000 images for removal across websites from every branch of the military. Outlets quickly noted that websites about the <a href = 'https://apnews.com/article/dei-purge-images-pentagon-diversity-women-black-8efcfaec909954f4a24bad0d49c78074' target="_blank" rel="noopener noreferrer">Tuskegee Airmen</a>, <a href = 'https://www.washingtonpost.com/investigations/2025/03/17/pentagon-dei-native-american-iwo-jima/' target="_blank" rel="noopener noreferrer">Navajo code talkers</a> and <a href = 'https://www.axios.com/2025/03/19/jackie-robinson-military-service-webpage-dod-dei' target="_blank" rel="noopener noreferrer">Jackie Robinson</a> were among the sites purged. Websites about <a href = 'https://www.forbes.com/sites/conormurray/2025/03/07/enola-gay-aircraft-and-other-historic-items-inaccurately-targeted-under-pentagons-anti-dei-purge/' target="_blank" rel="noopener noreferrer">Enola Gay</a> - the aircraft that dropped an atomic bomb on Hiroshima - were also removed, presumably because they were mistakenly flagged as LGBTQ+ content. 
     </p>
 
     <p>
@@ -41,7 +41,7 @@
     </p>
 
     <p>
-        Since most website urls are now defunct, this analysis relies on website titles, which were preserved in an <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1'>AP database</a>. To start simply, I checked the most common phrases among website titles:
+        Since most website urls are now defunct, this analysis relies on website titles, which were preserved in an <a href = 'https://flo.uri.sh/visualisation/21970718/embed?auto=1' target="_blank" rel="noopener noreferrer">AP database</a>. To start simply, I checked the most common phrases among website titles:
     </p>
 
     <br>
@@ -249,7 +249,7 @@
   />
 
   <p>
-    As people have started to notice military heroes gone missing online, outrage has grown, and in some cases the Pentagon has retraced its steps. Websites about Jackie Robinson, the Navajo code talkers, and the Tuskegee Airmen, for example, have been <a href = 'https://www.npr.org/2025/03/20/nx-s1-5334461/pentagon-black-veterans-navajo-code-talkers-website-diversity'>restored</a>. But the purge is quite widespread in its reach, erasing digital traces of hundreds of soldiers, many of whom haven't received attention yet. 
+    As people have started to notice military heroes gone missing online, outrage has grown, and in some cases the Pentagon has retraced its steps. Websites about Jackie Robinson, the Navajo code talkers, and the Tuskegee Airmen, for example, have been <a href = 'https://www.npr.org/2025/03/20/nx-s1-5334461/pentagon-black-veterans-navajo-code-talkers-website-diversity' target="_blank" rel="noopener noreferrer">restored</a>. But the purge is quite widespread in its reach, erasing digital traces of hundreds of soldiers, many of whom haven't received attention yet. 
   </p>
 
   <p>
@@ -257,7 +257,7 @@
   </p>
 
   <p>
-    This database displays all of the Pentagon's purged websites, broken down by identity group and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes_and_types.csv'>csv</a>). There are many more striking examples of purged content to be found in it - too many to list comprehensively. But here are a few: websites about Vietnamese refugees, immigrants-turned-soldiers, and Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
+    This database displays all of the Pentagon's purged websites, broken down by identity group and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes_and_types.csv' target="_blank" rel="noopener noreferrer" >csv</a>). There are many more striking examples of purged content to be found in it - too many to list comprehensively. But here are a few: websites about Vietnamese refugees, immigrants-turned-soldiers, and Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
 
     </p>
 

@@ -26,13 +26,6 @@ a:visited {
   text-underline-offset: 2px;
 }
 
-/* Set all links to open in new tabs */
-a[href^="http"],
-a[href^="https"] {
-  target-name: new;
-  target: _blank;
-}
-
 a:hover {
   opacity: 0.8;
 }
