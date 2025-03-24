@@ -52,7 +52,6 @@
             .then(data => {
                 // Data comes pre-parsed with columns as properties
                 console.log("CSV loaded successfully:", data.length, "rows");
-                console.log("Sample row:", data[0]);
                 
                 // Store the data
                 allData = data;
@@ -66,8 +65,7 @@
                 });
                 
                 uniqueThemes = Array.from(themeSet).sort();
-                console.log(`Found ${uniqueThemes.length} unique themes:`, uniqueThemes);
-                
+               
                 // Extract unique types
                 const typeSet = new Set();
                 data.forEach(row => {
@@ -77,8 +75,7 @@
                 });
                 
                 uniqueTypes = Array.from(typeSet).sort();
-                console.log(`Found ${uniqueTypes.length} unique types:`, uniqueTypes);
-                
+              
                 // Initial filtering
                 filterData();
                 isLoading = false;
