@@ -84,7 +84,6 @@
     titlesList={
       [
         'Observance for Black History Month',
-        'Quantico celebrates Black History Month at prayer breakfast',
         'Tuskegee Airman describes service, time as POW during virtual call with 332nd AEW',
         'Marine Corps Observes African American / Black History Month', 
         'African American/Black Innovations ... where would we be without them?',
@@ -98,7 +97,6 @@
         '2nd Annual Soul Food Taste',
         'Vance Marchbanks Jr.',
         'Display About Slavery',
-        'Civil rights activist shares legacy of love, community and action amid anecdotes of working with Dr. Martin Luther King Jr.',
         "Respecting slaves' value at Mount Vernon",
         'Miramar pauses to acknowledge selfless service of Tuskegee Airmen',
         'Elayne Arrington'
@@ -106,7 +104,6 @@
     highlightMap={{
       0: [
         'Observance for Black History Month',
-        'Quantico celebrates Black History Month at prayer breakfast',
         'Marine Corps Observes African American / Black History Month', 
         'African American Heritage Open Mic Night',
         'Goodfellow Celebrates Juneteenth',
@@ -128,7 +125,6 @@
       ],
       4: [
          "Respecting slaves' value at Mount Vernon",
-         'Civil rights activist shares legacy of love, community and action amid anecdotes of working with Dr. Martin Luther King Jr.',
          'Display About Slavery',
          'Americans of all colors contributed to civil rights movement',
       ],
