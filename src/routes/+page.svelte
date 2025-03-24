@@ -37,7 +37,7 @@
     </p>
 
     <p>
-        Although these examples have captured attention, to my knowledge someone's yet to run a comprehensive analysis that categorizes purged websites. I try to do that here. By systematically categorizing websites the Trump administration has purged, I think we can better understand the full breadth of stories the administration considers unfitting for the military. 
+        Although these examples have captured attention, someone's yet to run a comprehensive analysis that categorizes purged websites. I try to do that here. By systematically categorizing websites the Trump administration has removed, I think we can better understand the full breadth of stories the administration considers unfitting for the military. 
     </p>
 
     <p>
@@ -67,7 +67,7 @@
 
     <p>
 
-    To classify each website into one of these groups, I used a large language model, which has enough contextual knowledge to recognize that titles like "Jackie Robinson" or "Tuskegee Airmen" are related to Black people, even though they don't explicitly have "black" in their text. After manually reviewing a sample of 100 classifications, I found that the model was consistently choosing groups I would have chosen myself. Here are all websites, classified by identity group according to their title: 
+    To classify each website into one of these groups, I used a large language model, which has enough contextual knowledge to recognize that titles like "Jackie Robinson" or "Tuskegee Airmen" are related to Black people, even though they don't explicitly have "black" in their text. After manually reviewing a sample of 100 classifications, I found that the model was consistently choosing groups I would have chosen myself. Here are all websites, classified into identity groups based on their title: 
 
     </p>    
 
@@ -139,7 +139,7 @@
   />
   
     <p>
-    These few types of content come up again and again when you investigate websites of a specific identity group. To state the categories more generally, they are:
+    These few types of content come up again and again when you investigate websites of a specific identity group. To state the content categories more generally, they are:
     
     </p>
 
@@ -249,11 +249,11 @@
   </p>
 
   <p>
-    And you can see here that even when the Administration buckles and restores some websites, it keeps other related content erased. Some websites about Jackie Robinson were restored, for example, but the database below shows that other websites describing Jackie Robinson movies remain defunct (as of March 21st at least).
+    And you can see here that even when the administration buckles and restores some websites, it keeps other related content erased. Some websites about Jackie Robinson were restored, for example, but the database below shows that other websites describing Jackie Robinson movies remain defunct (as of March 21st at least).
   </p>
 
   <p>
-    This database displays all of the Pentagon's purged websites, broken down by identity group and content type (this dataset's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes_and_types.csv' target="_blank" rel="noopener noreferrer" >csv</a>). There are many more striking examples of purged content to be found in it - too many to list comprehensively. But here are a few: websites about Vietnamese refugees, immigrants-turned-soldiers, and Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
+    This database displays all of the Pentagon's purged websites, broken down by identity group and content type (it's also available for download as a <a href = 'https://github.com/m-cahana/pentagon_dei_purge/blob/main/static/data/cleaned_titles_with_themes_and_types.csv' target="_blank" rel="noopener noreferrer" >csv</a>). There are many more striking examples of purged content to be found in it - too many to list comprehensively. But here are a few: websites about Vietnamese refugees, immigrants-turned-soldiers, and Holocaust survivors. All have been purged, suggesting that this administration doesn't think these stories, and these people, belong in the military.
 
     </p>
 

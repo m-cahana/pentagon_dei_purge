@@ -18,11 +18,10 @@ export const typeColors = {
   // Default color for fallback
   default: "#264027",
   "Explicit heritage and DEI events": "#1d8348", // dark green
-  "Everyday celebrations of heritage or ethnicity": "#117a65", // jungle green
-  "Facts of history that relate to a specific ethnic group": "#0e6655", // teal
-  "Mentions of personnel that highlight their ethnicity": "#148f77", // persian green
-  "Military personnel that belong to a specific ethnic group, even if that isn't explicity mentioned":
-    "#1abc9c", // turquoise
+  "Everyday celebrations": "#117a65", // jungle green
+  "Facts of history": "#0e6655", // teal
+  "Military personnel - identity mentioned": "#148f77", // persian green
+  "Military personnel - no stated identity": "#1abc9c", // turquoise
   Other: "#48c9b0", // medium turquoise
 };
 
