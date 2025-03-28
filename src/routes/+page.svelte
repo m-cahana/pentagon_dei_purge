@@ -268,8 +268,9 @@
 		margin: 0 auto;
 		max-width: 800px;
 		padding: 1rem;
-        font-family: "Helvetica";
+    font-family: "Helvetica";
 		text-align: center;
+    overflow-x: hidden;
 	}
     
 	h1 {
