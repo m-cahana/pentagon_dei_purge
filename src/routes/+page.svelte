@@ -270,7 +270,6 @@
 		padding: 1rem;
     font-family: "Helvetica";
 		text-align: center;
-    overflow-x: hidden;
 	}
     
 	h1 {
